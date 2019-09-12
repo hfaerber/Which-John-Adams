@@ -1,4 +1,80 @@
+* {
+  /* border: 1px solid blue; */
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
-   background-color: lightgrey;
+   /* background-color: lightgrey; */
+   margin: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-icon {
+  width: 95px;
+}
+
+h1 {
+  margin: auto;
+  padding-right: 93px;
+}
+
+main {
+  background-image: url("assets/beyonce-COB-bw.png");
+  background-repeat: no-repeat;
+  background-position: 50% 35%;
+  background-size: 300vh;
+  height: 100vh;
+  border: 1px solid white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  padding: 15px;
+  align-items: center;
+  margin-top: 12%;
+}
+
+.text-inputs-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid blue; */
+  width: 61%;
+}
+
+label {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+
+}
+.input-with-label-box {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid green; */
+  width: 42%;
+  font-size: 147%;
+}
+
+input[type=text] {
+  width: 96%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 115%;
+  padding: 5px;
+}
+
+input[type=button] {
+  background-color: black;
+  width: 61%;
+  color: white;
+  padding: 14px;
+  font-size: 148%;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 8%;
 }

@@ -2,28 +2,35 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap"
+    <link href=
+      "https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap"
       rel="stylesheet">
     <meta charset="utf-8">
     <title>WHICH BEYONCE</title>
   </head>
   <body>
     <header>
-      <button>------</button>
+      <img src="assets/nav-button.png" alt="navigation menu icon"
+      class="nav-icon">
       <h1>WHICH BEYONCE</h1>
     </header>
     <main>
       <aside class="left-aside"></aside>
       <section class="play-area">
         <form>
-          <input type="text" id="player1" name="player1" maxlength="32">
-          <label for="player1">PLAYER 1</label>
-          <input type="text" id="player2" name="player2" maxlength="32">
-          <label for="player2">PLAYER 2</label>
+          <div class="text-inputs-box">
+            <div class="input-with-label-box">
+              <input type="text" id="player1" name="player1" maxlength="32">
+              <label for="player1">PLAYER 1</label>
+            </div>
+            <div class="input-with-label-box">
+              <input type="text" id="player2" name="player2" maxlength="32">
+              <label for="player2">PLAYER 2</label>
+            </div>
+          </div>
           <input type="button" class="play-game" value="PLAY GAME">
         </form>
-        <article class="game-directions">
+        <article class="game-directions" hidden>
           <h2>WELCOME <span class="p1-name">PLAYER 1 NAME</span> AND
             <span class="p2-name">PLAYER 2 NAME</span>!</h2>
           <p> The goal of the game is to find all 5 pairs of cards as quickly as
