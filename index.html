@@ -17,21 +17,25 @@
     <main>
       <aside class="left-aside"></aside>
       <section class="play-area">
-        <form>
-          <div class="text-inputs-box">
-            <div class="input-with-label-box">
-              <input type="text" id="player1" name="player1" maxlength="32">
-              <label for="player1">PLAYER 1</label>
+        <section class="hide-able-form">
+          <form>
+            <div class="text-inputs-box">
+              <div class="input-with-label-box" id="p1-input-area">
+                <input type="text" id="player1" name="player1" maxlength="32">
+                <label for="player1">PLAYER 1</label>
+                <p class="error-msg" id="error-P1"> <p>
+              </div>
+              <div class="input-with-label-box" id="p1-input-area">
+                <input type="text" id="player2" name="player2" maxlength="32">
+                <label for="player2">PLAYER 2</label>
+                <p class="error-msg-p2" id="error-P2"> <p>
+              </div>
             </div>
-            <div class="input-with-label-box">
-              <input type="text" id="player2" name="player2" maxlength="32">
-              <label for="player2">PLAYER 2</label>
-            </div>
-          </div>
-          <input type="button" class="play-game" value="PLAY GAME">
-        </form>
+            <input type="button" class="play-game-button" id="play-game-button-js" value="PLAY GAME">
+          </form>
+        </section>
         <article class="game-directions" hidden>
-          <h2>WELCOME <span class="p1-name">PLAYER 1 NAME</span> AND
+          <h2 class="named-greeting">WELCOME <span class="p1-name">PLAYER 1 NAME</span> AND
             <span class="p2-name">PLAYER 2 NAME</span>!</h2>
           <p> The goal of the game is to find all 5 pairs of cards as quickly as
             possible. The player that finds the greatest numbers of pairs, wins.
@@ -39,12 +43,13 @@
           <p> To begin playing, the player whose name is highlighted can click
             any card in the card pile. It will flip over and reveal a picture of
             Beyonce. Click another card. If they match, they will disappear and
-            you will have completed a match! If they don't, you'll have three
+            you will have com-pleted a match! If they don't, you'll have three
             seconds to look at them before they flip back over. Then it's time
             for the other player to try!
           </p>
           <p>After you play, you'll see the name of the final winner and how
             long it took to win the game.</p>
+          <input type="button" class="play-game-button-directions" value="PLAY GAME">
         </article>
       </section>
       <aside class="right-aside"></aside>
