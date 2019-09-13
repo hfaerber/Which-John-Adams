@@ -31,6 +31,11 @@ main {
   border: 1px solid white;
 }
 
+.play-area {
+  display: flex;
+  justify-content: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -68,8 +73,9 @@ input[type=text] {
   padding: 5px;
 }
 
-input[type=button] {
+.play-game-button {
   background-color: black;
+  font-family: 'Open Sans', sans-serif;
   width: 61%;
   color: white;
   padding: 14px;
@@ -77,4 +83,33 @@ input[type=button] {
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
   margin-top: 8%;
+}
+
+.play-game-button-directions {
+  background-color: black;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  color: white;
+  padding: 8px;
+  font-size: 91%;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 8%;
+}
+
+
+article {
+  font-size: 162%;
+  width: 61%;
+}
+
+article > p {
+  margin: 7% 0%;
+}
+
+.named-greeting {
+  font-size: 125%;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 19%;
 }
