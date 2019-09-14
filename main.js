@@ -7,10 +7,12 @@ var directionsView = document.querySelector('.game-directions');
 var p1NameSpan = document.querySelector('.p1-name');
 var cardsView = document.querySelector('.hide-able-cards');
 var cards = document.querySelectorAll('.card');
+var playArea = document.querySelector('.play-area');
 
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
+playArea.addEventListener('click', clickCard);
 
 // EVENT HANDLERS
 
@@ -40,8 +42,18 @@ function clickDirPageBtn() {
 // put global array in the deck data model
 
   toggleView(directionsView, cardsView);
-  instantiateCards(cards);
+  // instantiateCards(cards);
+  instantiateDeck();
+  // this is kind of running the card instantiation twice isn't it?
+  // running it first then again within the instantiateDeck() function call?
 }
+
+function clickCard() {
+  if (event.target is a card) {
+    change that cards' img src;
+  }
+}
+
 
 function instantiateCards(cards) {
   var instantiatedCards = [];
@@ -52,18 +64,26 @@ function instantiateCards(cards) {
     instantiatedCards.push(card);
   }
   return instantiatedCards;
+}
+
+function instantiateDeck() {
+  var deckId = Date.now();
+  var instCards = instantiateCards(cards);
+  var deck = new Deck(deckId, instCards);
+  // does this function need to return anything? not if i'm not using the deck yet
+}
   // do i want to reassign the global array to the instantiated version of itself?
 // decided to create local array of instantiatedCards instead and return it
 // not sure yet if i need lines 47 52 and 54.  we'll see.
 // could I just documentQSAll the cards within the first line of this function?
+// if i do the cards arr locally i wouldnt need to pass through and arg.
 
-}
 
 // PSUEDO-CODING
 // i probs want to instantiate my cards on the dirplaybtn click
 // and put them into a global array of cards
 // and instantiate a Deck
-// and put the global arr into that decks data model
+// and put the new arr of instantiated cards into that decks data model
 //
 // I want:
 // the card to diplay its john adams image

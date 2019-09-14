@@ -1,10 +1,10 @@
 class Deck {
-  constructor(id) {
+  constructor(id, cards) {
     this.id = id;
-    this.cards;
-    this.matchedCards;
-    this.selectedCards;
-    this.matches;
+    this.cards = cards;
+    this.matchedCards = [];
+    this.selectedCards = [];
+    this.matches = [];
   }
   shuffle() {
 
