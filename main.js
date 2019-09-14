@@ -54,18 +54,36 @@ function clickDirPageBtn() {
 }
 
 function clickBackOfCard(event) {
-  // i want to make the below stuff happen only twice.
-  // use selected cards in deck
-  if (event.target.classList.contains('card')) {
+  if (event.target.classList.contains('card') && globalDecks[0].selectedCards.length < 2) {
     event.target.src = event.target.dataset.imgsrc;
+    var arrayOfCards = globalDecks[0].cards;
+    for (var i = 0; i < arrayOfCards.length; i++) {
+      if (arrayOfCards[i].id === event.target.dataset.cardid) {
+        globalDecks[0].selectedCards.push(arrayOfCards[i]);
+      }
+    }
+  }
+}
+// i want to make the below stuff happen only twice.
+// use selected cards in deck
+// wait could i just add a this.selected to the cards and change it on click
+// compare event.target.dataset.cardid ===
+// globalDecks[0].cards which is an array so it could forloop through look
+// for the card.id.
+// if the card.id matches the event.target.dataset.cardid,
+// push it into the deck.selectedCards array which will only ever have 0 and 1 index.
+// because we only want the above to happen if the selected cards array.length <2.
+//
+// if (globalDecks[0].selectedCards.length < 2 {
+//   change img,
+//   then loop through deckcards array and push the selected on into deck.selected
+// }
+
     // push that cardObject that was clicked into the selectedCards array in deck
 // how will it know which one was clicked?
 // compare ids?
 // then find index?
 // then add that index to new array wihtout removing it from this.cards arr?
-  }
-}
-
 
 function instantiateCards(cards) {
   var instantiatedCards = [];
