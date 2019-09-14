@@ -5,10 +5,13 @@ var errorMsgP1 = document.getElementById('error-P1');
 var formView = document.querySelector('.hide-able-form');
 var directionsView = document.querySelector('.game-directions');
 var p1NameSpan = document.querySelector('.p1-name');
+var p1AsideNameSpan = document.querySelector('.p1-aside-name');
 var cardsView = document.querySelector('.hide-able-cards');
 var cards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
-
+var asides = document.querySelectorAll('.aside');
+var p1MatchCount = document.querySelector('.p1-match-count');
+var globalDecks = [];
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
@@ -21,7 +24,7 @@ function clickPlayGameBtn() {
   if (p1InputField.value.length === 0) {
     errorMsgP1.innerText = 'Error! Please enter name.'
   } else {
-    toggleView(formView, directionsView);
+    toggleMiddleView(formView, directionsView);
     updateSpan(player1Name);
   }
   // make it so that it can't be blank spacing and still work
@@ -41,17 +44,25 @@ function clickDirPageBtn() {
 
 // put global array in the deck data model
 
-  toggleView(directionsView, cardsView);
+  toggleMiddleView(directionsView, cardsView);
+  toggleAsideView(asides);
   // instantiateCards(cards);
   instantiateDeck();
+  countMatches();
   // this is kind of running the card instantiation twice isn't it?
   // running it first then again within the instantiateDeck() function call?
 }
 
 function clickBackOfCard(event) {
+  // i want to make the below stuff happen only twice.
+  // use selected cards in deck
   if (event.target.classList.contains('card')) {
     event.target.src = event.target.dataset.imgsrc;
-    // change that cards' img src;
+    // push that cardObject that was clicked into the selectedCards array in deck
+// how will it know which one was clicked?
+// compare ids?
+// then find index?
+// then add that index to new array wihtout removing it from this.cards arr?
   }
 }
 
@@ -71,6 +82,7 @@ function instantiateDeck() {
   var deckId = Date.now();
   var instCards = instantiateCards(cards);
   var deck = new Deck(deckId, instCards);
+  globalDecks.unshift(deck);
   // does this function need to return anything? not if i'm not using the deck yet
 }
   // do i want to reassign the global array to the instantiated version of itself?
@@ -96,14 +108,32 @@ function instantiateDeck() {
 
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
 
-function toggleView(hidden, displayed) {
+function toggleMiddleView(hidden, displayed) {
   // element.hidden = !element.hidden;
   hidden.classList.add('hide-it');
   displayed.classList.remove('hide-it');
 }
 
-function updateSpan(name) {
-  // make name uppercase
-  p1NameSpan.innerText = `${name}`;
-
+function toggleAsideView(asides) {
+  for (var i = 0; i < asides.length; i++) {
+    // if (asides[i].classList.contains('hide-aside')) {
+    //   asides[i]classList.remove('hide-aside');
+    // }
+    asides[i].classList.remove('hide-aside');
+  }
 }
+
+function updateSpan(name) {
+  name = name.toUpperCase();
+  p1NameSpan.innerText = `${name}`;
+  p1AsideNameSpan.innerText = `${name}`;
+}
+
+function countMatches() {
+  p1MatchCount.innerText = globalDecks[0].matches;
+}
+  // am i going to want a global arr of instDecks so i can loop through it here
+  // and access the matches property (count). even though i only have 1 deck now i
+  // might have more later to get the randomization done
+
+  // i shouldnt even have to loop though - i can just pull index 0

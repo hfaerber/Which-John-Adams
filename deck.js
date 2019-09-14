@@ -4,7 +4,7 @@ class Deck {
     this.cards = cards;
     this.matchedCards = [];
     this.selectedCards = [];
-    this.matches = [];
+    this.matches = 0;
   }
   shuffle() {
 
