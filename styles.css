@@ -74,6 +74,7 @@ h3 {
 .play-area {
   display: flex;
   justify-content: center;
+  padding: 10% 3%;
 }
 
 .hide-able-form {
@@ -163,11 +164,18 @@ article > p {
   margin-top: 19%;
 }
 
-.card {
-  width: 15%;
-  height: 42%;
+.hide-able-cards {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cards-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .j-card {
-  width: 100%;
+  width: 16%;
+  height: 67%;
 }
