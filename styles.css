@@ -119,6 +119,7 @@ input[type=text] {
   font-family: 'Open Sans', sans-serif;
   font-size: 115%;
   padding: 5px;
+  border: 0;
 }
 
 .play-game-button {
@@ -131,6 +132,7 @@ input[type=text] {
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
   margin-top: 8%;
+  border: 0;
 }
 
 .play-game-button-directions {
@@ -144,7 +146,6 @@ input[type=text] {
   font-family: 'Open Sans', sans-serif;
   margin-top: 8%;
 }
-
 
 article {
   font-size: 162%;
@@ -160,4 +161,13 @@ article > p {
   font-weight: 700;
   text-align: center;
   margin-top: 19%;
+}
+
+.card {
+  width: 15%;
+  height: 42%;
+}
+
+.j-card {
+  width: 100%;
 }
