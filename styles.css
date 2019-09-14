@@ -183,3 +183,7 @@ article > p {
 .hide-it {
   display: none;
 }
+
+.hide-aside {
+  visibility: hidden;
+}
