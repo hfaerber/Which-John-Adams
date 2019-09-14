@@ -1,5 +1,6 @@
 class Deck {
-  constructor() {
+  constructor(id) {
+    this.id = id;
     this.cards;
     this.matchedCards;
     this.selectedCards;
@@ -12,6 +13,6 @@ class Deck {
 
   }
   moveToMatched() {
-    
+
   }
 }
