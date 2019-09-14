@@ -16,6 +16,8 @@
     </header>
     <main>
 
+
+<!-- left aside hidable -->
       <aside class="left-aside">
         <h3 class="p1-aside-name" id="p1-aside-name-js">PLAYER 1 NAME</h3>
         <p>#4 TOP PLAYER</p>
@@ -30,11 +32,10 @@
         <p>63.98 SECONDS</p>
       </aside>
 
-
       <section class="play-area">
 
-        <!-- load screen hideable section -->
-        <section class="hide-able-form" hidden>
+<!-- load screen hideable section -->
+        <section class="hide-able-form">
           <form>
             <div class="text-inputs-box">
               <div class="input-with-label-box" id="p1-input-area">
@@ -52,8 +53,8 @@
           </form>
         </section>
 
-        <!-- game directions hidable article -->
-        <article class="game-directions" hidden>
+<!-- game directions hidable article -->
+        <article class="game-directions hide-it">
           <h2 class="named-greeting">WELCOME <span class="p1-name">PLAYER 1 NAME</span> AND
             <span class="p2-name">PLAYER 2 NAME</span>!</h2>
           <p> The goal of the game is to find all 5 pairs of cards as quickly as
@@ -68,44 +69,45 @@
           </p>
           <p>After you play, you'll see the name of the final winner and how
             long it took to win the game.</p>
-          <input type="button" class="play-game-button-directions" value="PLAY GAME">
+          <input type="button" class="directions-page-play-button" value="PLAY GAME">
         </article>
 
 <!-- cards facedown hidable section -->
 
-        <section class="hide-able-cards">
+        <section class="hide-able-cards hide-it">
           <div class="cards-row top-cards-row">
-            <img data-id="1" data-match-id="16" class="card j-card"
+            <img data-cardid="1" data-matchid="16" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="2" data-match-id="27" class="card j-card"
+            <img data-cardid="2" data-matchid="27" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="3" data-match-id="38" class="card j-card"
+            <img data-cardid="3" data-matchid="38" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
           </div>
           <div class="cards-row mid-cards-row">
-            <img data-id="4" data-match-id="49" class="card j-card"
+            <img data-cardid="4" data-matchid="49" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="5" data-match-id="50" class="card j-card"
+            <img data-cardid="5" data-matchid="50" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="6" data-match-id="16" class="card j-card"
+            <img data-cardid="6" data-matchid="16" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="7" data-match-id="27" class="card j-card"
+            <img data-cardid="7" data-matchid="27" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
           </div>
           <div class="cards-row bottom-cards-row">
-            <img data-id="8" data-match-id="38" class="card j-card"
+            <img data-cardid="8" data-matchid="38" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="9" data-match-id="49" class="card j-card"
+            <img data-cardid="9" data-matchid="49" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
-            <img data-id="10" data-match-id="50" class="card j-card"
+            <img data-cardid="10" data-matchid="50" class="card j-card"
               src="assetsja/j-card.png.jpg" alt="back of card with letter j">
           </div>
         </section>
 
 
-
       </section>
-      <aside class="right-aside" hidden>
+
+<!-- right aside hidable -->
+      <aside class="right-aside">
         <h3 class="p2-aside-name" id="p2-aside-name-js"></h3>
         <p>#4 TOP PLAYER</p>
         <div class="white-lines">
@@ -118,6 +120,8 @@
         <p>ROUND 4</p>
         <p>63.98 SECONDS</p>
       </aside>
+
+
     </main>
     <script src="card.js"></script>
     <script src="deck.js"></script>

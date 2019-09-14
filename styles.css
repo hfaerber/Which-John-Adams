@@ -136,7 +136,7 @@ input[type=text] {
   border: 0;
 }
 
-.play-game-button-directions {
+.directions-page-play-button {
   background-color: black;
   font-family: 'Open Sans', sans-serif;
   width: 100%;
@@ -178,4 +178,8 @@ article > p {
 .j-card {
   width: 16%;
   height: 67%;
+}
+
+.hide-it {
+  display: none;
 }
