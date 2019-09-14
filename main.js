@@ -12,7 +12,7 @@ var playArea = document.querySelector('.play-area');
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
-playArea.addEventListener('click', clickCard);
+playArea.addEventListener('click', clickBackOfCard);
 
 // EVENT HANDLERS
 
@@ -48,9 +48,10 @@ function clickDirPageBtn() {
   // running it first then again within the instantiateDeck() function call?
 }
 
-function clickCard() {
-  if (event.target is a card) {
-    change that cards' img src;
+function clickBackOfCard(event) {
+  if (event.target.classList.contains('card')) {
+    event.target.src = event.target.dataset.imgsrc;
+    // change that cards' img src;
   }
 }
 
