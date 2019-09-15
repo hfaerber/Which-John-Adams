@@ -31,26 +31,11 @@ function clickPlayGameBtn() {
 }
 
 function clickDirPageBtn() {
-// instantiate cards (what args?)
-// to inst and give arg data i think i need a global array
-// with each card so I can instantiate them within a for loop that goes through
-// each one and pulls the dataset info to pass through as the arg so it can live
-// within the properties in the data model.
-
-
-// instantiate deck (what args?)
-
-// put cards in global array
-
-// put global array in the deck data model
-
   toggleMiddleView(directionsView, cardsView);
   toggleAsideView(asides);
   // instantiateCards(cards);
   instantiateDeck();
   countMatches();
-  // this is kind of running the card instantiation twice isn't it?
-  // running it first then again within the instantiateDeck() function call?
 }
 
 function clickBackOfCard(event) {
@@ -64,56 +49,23 @@ function clickBackOfCard(event) {
     }
     if (globalDecks[0].selectedCards.length === 2) {
       checkForMatch();
-      // I AM TRYING TO GRAB EACH CARD TO ADD THE CLASS CANT FROM DATA MODEL
     }
   }
 }
 
 function checkForMatch() {
-  // if (globalDecks[0].selectedCards.length === 2) {}
-  // var correctMatch = globalDecks[0].checkSelectedCards();
-  // if (correctMatch === true) {
   if (globalDecks[0].checkSelectedCards() === true) {
-    // globalDecks[0].selectedCards[0].classList.add('hide-aside');
     var firstCardId = globalDecks[0].selectedCards[0].id;
-    var firstCard = document.getElementById('${firstCardId}');
+    var firstCard = document.getElementById(`${firstCardId}`);
     firstCard.classList.add('hide-aside');
-    // secondCard.classList.add('hide-aside');
-
-    // globalDecks[0].selectedCards[1].classList.add('hide-aside');
-
+    var secondCardId = globalDecks[0].selectedCards[1].id;
+    var secondCard = document.getElementById(`${secondCardId}`);
+    secondCard.classList.add('hide-aside');
     globalDecks[0].moveToMatched();
   }
 }
 
-// **i should make this compare the matched boolean of each card
-//
-// if dataset.matchid are the same
-// for loop thru both cards and apply hide-aside class to each cards
-// increase this.matches counter <<<< (does this in data model)
-// run function to update span compared to this.matches counter.
-
-// }
-// i want to make the below stuff happen only twice.
-// use selected cards in deck
-// wait could i just add a this.selected to the cards and change it on click
-// compare event.target.dataset.cardid ===
-// globalDecks[0].cards which is an array so it could forloop through look
-// for the card.id.
-// if the card.id matches the event.target.dataset.cardid,
-// push it into the deck.selectedCards array which will only ever have 0 and 1 index.
-// because we only want the above to happen if the selected cards array.length <2.
-//
-// if (globalDecks[0].selectedCards.length < 2 {
-//   change img,
-//   then loop through deckcards array and push the selected on into deck.selected
-// }
-
-    // push that cardObject that was clicked into the selectedCards array in deck
-// how will it know which one was clicked?
-// compare ids?
-// then find index?
-// then add that index to new array wihtout removing it from this.cards arr?
+// **i could make this compare the matched boolean of each card
 
 function instantiateCards(cards) {
   var instantiatedCards = [];
@@ -141,17 +93,6 @@ function instantiateDeck() {
 
 
 // PSUEDO-CODING
-// i probs want to instantiate my cards on the dirplaybtn click
-// and put them into a global array of cards
-// and instantiate a Deck
-// and put the new arr of instantiated cards into that decks data model
-//
-// I want:
-// the card to diplay its john adams image
-// when the user clicks on it.
-// use event.target to say if the click happen on this card,
-// change this cardssrc to other img src.
-
 
 
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
@@ -164,9 +105,6 @@ function toggleMiddleView(hidden, displayed) {
 
 function toggleAsideView(asides) {
   for (var i = 0; i < asides.length; i++) {
-    // if (asides[i].classList.contains('hide-aside')) {
-    //   asides[i]classList.remove('hide-aside');
-    // }
     asides[i].classList.remove('hide-aside');
   }
 }
@@ -180,8 +118,3 @@ function updateSpan(name) {
 function countMatches() {
   p1MatchCount.innerText = globalDecks[0].matches;
 }
-  // am i going to want a global arr of instDecks so i can loop through it here
-  // and access the matches property (count). even though i only have 1 deck now i
-  // might have more later to get the randomization done
-
-  // i shouldnt even have to loop though - i can just pull index 0
