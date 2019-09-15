@@ -42,68 +42,36 @@ function clickBackOfCard(event) {
   // could call this pickTwoCards
   if (event.target.classList.contains('card') && globalDecks[0].selectedCards.length < 2) {
     event.target.src = event.target.dataset.imgsrc;
+    event.target.classList.remove('card');
+    event.target.classList.add('photo');
     var arrayOfCards = globalDecks[0].cards;
     for (var i = 0; i < arrayOfCards.length; i++) {
       if (arrayOfCards[i].id === event.target.dataset.cardid) {
         globalDecks[0].selectedCards.push(arrayOfCards[i]);
+      }
     }
-  }
-  if (globalDecks[0].selectedCards.length === 2) {
-    runIfMatch();
-  }
-  }
+    if (globalDecks[0].selectedCards.length === 2) {
+      runIfMatch();
+    }
+  } else if (event.target.classList.contains('photo')) {
+      event.target.src = 'assetsja/j-card.png.jpg';
+      event.target.classList.remove('photo');
+      event.target.classList.add('card');
+      function wasClicked(element) {
+        return element.id === event.target.id;
+      }
+      var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
+      globalDecks[0].selectedCards.splice(indexToSplice, 1);
+    }
 }
-
-// 
-// ORIG FUNCTION WITH .LENGTH CONDITIONAL BUILT IN. THREW ERROR WHEN TRYING TO compare
-// CARDS THAT DIDNT MATCH
-// function runIfMatch() {
-//   if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() === true) {
-//     hideBothCards();
-//     globalDecks[0].moveToMatched();
-//     countMatches();
-//   }
-// }
 
 function runIfMatch() {
   if (globalDecks[0].checkSelectedCards() === true) {
     hideBothCards();
     globalDecks[0].moveToMatched();
     countMatches();
-  } else {
-    for (var i = 0; i < globalDecks[0].selectedCards.length; i++) {
-      var flippedCard = document.getElementById(`${globalDecks[0].selectedCards[i].id}`);
-      flippedCard.addEventListener('click', clickFrontOfCard);
-    }
   }
 }
-
-// THE BELOW FUNCTION IS THE FUNCTIONALITY I AM STUCK ON.  TRIED MANY THINGS.  MOST WORK TO SOME
-// DEGREE BUT NONE WORK FULLY.
-
-var counter = 0;
-
-function clickFrontOfCard(event) {
-// if (this.selected = true)
-  if (counter < 2) {
-    event.target.src = 'assetsja/j-card.png.jpg';
-    counter++;
-    console.log(counter);
-  }
-  if (counter >= 2) {
-    globalDecks[0].selectedCards = [];
-    counter = 0;
-  }
-}
-
-// THE FUNCTIONALITY BELOW DIDN'T WORK BECAUSE IT CHANGED THE ARRAY LENGTH TOO SOON
-  // remove from selectCards arrayOfCards
-  // function wasClicked(element) {
-  //   return element.id === event.target.id;
-  // }
-  // var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
-  // globalDecks[0].selectedCards.splice(indexToSplice, 1);
-
 
 function hideBothCards() {
   var firstCardId = globalDecks[0].selectedCards[0].id;
@@ -112,9 +80,8 @@ function hideBothCards() {
   var secondCardId = globalDecks[0].selectedCards[1].id;
   var secondCard = document.getElementById(`${secondCardId}`);
   secondCard.classList.add('hide-aside');
+  // **i could make this compare the matched boolean of each card
 }
-
-// **i could make this compare the matched boolean of each card
 
 function instantiateCards(cards) {
   var instantiatedCards = [];
@@ -139,10 +106,6 @@ function instantiateDeck() {
 // not sure yet if i need lines 47 52 and 54.  we'll see.
 // could I just documentQSAll the cards within the first line of this function?
 // if i do the cards arr locally i wouldnt need to pass through and arg.
-
-
-// PSUEDO-CODING
-
 
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
 
