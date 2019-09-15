@@ -46,47 +46,60 @@ function clickBackOfCard(event) {
     for (var i = 0; i < arrayOfCards.length; i++) {
       if (arrayOfCards[i].id === event.target.dataset.cardid) {
         globalDecks[0].selectedCards.push(arrayOfCards[i]);
-      }
     }
+  }
+  if (globalDecks[0].selectedCards.length === 2) {
     runIfMatch();
-    // runIfNoMatch();
+  }
   }
 }
 
+// function runIfMatch() {
+//   if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() === true) {
+//     hideBothCards();
+//     globalDecks[0].moveToMatched();
+//     countMatches();
+//   }
+// }
+
 function runIfMatch() {
-  if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() === true) {
+  if (globalDecks[0].checkSelectedCards() === true) {
     hideBothCards();
     globalDecks[0].moveToMatched();
     countMatches();
+  } else {
+    for (var i = 0; i < globalDecks[0].selectedCards.length; i++) {
+      var flippedCard = document.getElementById(`${globalDecks[0].selectedCards[i].id}`);
+      flippedCard.addEventListener('click', clickFrontOfCard);
+    }
   }
 }
 
-function runIfNoMatch() {
-// HOW CAN I SET A CONDITIONAL HERE SO IT ONLY DOES THIS STUFF IF ITS // NOT
-// NOT A MATCH AND THE CARD IS ALREADY FLIPPED BC IT CAN'T CHECK FOR A MATCH if
-// ONLY ONE CARD HAS BEEN FLIPPED. - WOULD MOVING THE selectedCards.LENGTH BACK
-// INTO THE ORIG FUNCTION HELP? OR MAYBE AN || SAYING selectedCards.LENGTH ===1
-// OR THE CARDS DONT MATCH BUT YOU SHOULD BE ABLE TO FLIP THE 1ST ONE BACK OVER
-// UNTIL YOU'VE FLIPPED A SECOND ONE. 
+// THE BELOW FUNCTION IS THE FUNCTIONALITY I AM STUCK ON.  TRIED MANY THINGS.  MOST WORK TO SOME
+// DEGREE BUT NONE WORK FULLY.
 
-  if (globalDecks[0].checkSelectedCards() !== true) {
-  // if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() !== true) {
-// nothing happens until user clicks each one and it flips back over.
-// when user clicks to flip back over: same event listener
-// img should change back
-// card should be removed from selectedCards array
-  clickFrontOfCard(event);
-  }
-}
+var counter = 0;
 
 function clickFrontOfCard(event) {
-  event.target.src = 'assetsja/j-card.png.jpg';
-
-
-  // how do I remove this from the selectedCards array? i will need to match its cardId
-  // with the id to find the index.
+// if (this.selected = true)
+  if (counter < 2) {
+    event.target.src = 'assetsja/j-card.png.jpg';
+    counter++;
+    console.log(counter);
+  }
+  if (counter >= 2) {
+    globalDecks[0].selectedCards = [];
+    counter = 0;
+  }
 }
 
+// THE FUNCTIONALITY BELOW DIDN'T WORK BECAUSE IT CHANGED THE ARRAY LENGTH TOO SOON
+  // remove from selectCards arrayOfCards
+  // function wasClicked(element) {
+  //   return element.id === event.target.id;
+  // }
+  // var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
+  // globalDecks[0].selectedCards.splice(indexToSplice, 1);
 
 
 function hideBothCards() {
