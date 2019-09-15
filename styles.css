@@ -164,6 +164,50 @@ article > p {
   margin-top: 19%;
 }
 
+.hide-able-winner-page {
+  width: 100%;
+}
+
+.congrats-heading {
+  font-size: 200%;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.took-you-text {
+  font-size: 177%;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 9%;
+}
+
+.to-keep-playing-text {
+  font-size: 177%;
+  font-weight: 300;
+  text-align: center;
+  margin: 9%;
+}
+
+.new-rematch-button-box {
+  width: 100%;
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.winner-page-btn {
+  background-color: black;
+  font-family: 'Open Sans', sans-serif;
+  width:43%;
+  color: white;
+  padding: 12px;
+  font-size: 141%;
+  font-weight: bold;
+  border: 0;
+}
+
 .hide-able-cards {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;

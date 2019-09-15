@@ -128,5 +128,15 @@ function updateSpan(name) {
 }
 
 function countMatches() {
-  p1MatchCount.innerText = globalDecks[0].matches;
+  if (globalDecks[0].matches === 5) {
+    showWinnerPage();
+  } else {
+    p1MatchCount.innerText = globalDecks[0].matches;
+  }
+}
+
+function showWinnerPage() {
+  // hide asides and .hide-able-cards sections
+  // unhide winnerpage section
+  // update player1name span
 }
