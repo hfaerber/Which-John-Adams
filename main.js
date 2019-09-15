@@ -62,8 +62,38 @@ function clickBackOfCard(event) {
         globalDecks[0].selectedCards.push(arrayOfCards[i]);
       }
     }
+    if (globalDecks[0].selectedCards.length === 2) {
+      checkForMatch();
+      // I AM TRYING TO GRAB EACH CARD TO ADD THE CLASS CANT FROM DATA MODEL
+    }
   }
 }
+
+function checkForMatch() {
+  // if (globalDecks[0].selectedCards.length === 2) {}
+  // var correctMatch = globalDecks[0].checkSelectedCards();
+  // if (correctMatch === true) {
+  if (globalDecks[0].checkSelectedCards() === true) {
+    // globalDecks[0].selectedCards[0].classList.add('hide-aside');
+    var firstCardId = globalDecks[0].selectedCards[0].id;
+    var firstCard = document.getElementById('${firstCardId}');
+    firstCard.classList.add('hide-aside');
+    // secondCard.classList.add('hide-aside');
+
+    // globalDecks[0].selectedCards[1].classList.add('hide-aside');
+
+    globalDecks[0].moveToMatched();
+  }
+}
+
+// **i should make this compare the matched boolean of each card
+//
+// if dataset.matchid are the same
+// for loop thru both cards and apply hide-aside class to each cards
+// increase this.matches counter <<<< (does this in data model)
+// run function to update span compared to this.matches counter.
+
+// }
 // i want to make the below stuff happen only twice.
 // use selected cards in deck
 // wait could i just add a this.selected to the cards and change it on click
