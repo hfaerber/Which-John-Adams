@@ -49,6 +49,7 @@ function clickBackOfCard(event) {
       }
     }
     runIfMatch();
+    // runIfNoMatch();
   }
 }
 
@@ -59,6 +60,34 @@ function runIfMatch() {
     countMatches();
   }
 }
+
+function runIfNoMatch() {
+// HOW CAN I SET A CONDITIONAL HERE SO IT ONLY DOES THIS STUFF IF ITS // NOT
+// NOT A MATCH AND THE CARD IS ALREADY FLIPPED BC IT CAN'T CHECK FOR A MATCH if
+// ONLY ONE CARD HAS BEEN FLIPPED. - WOULD MOVING THE selectedCards.LENGTH BACK
+// INTO THE ORIG FUNCTION HELP? OR MAYBE AN || SAYING selectedCards.LENGTH ===1
+// OR THE CARDS DONT MATCH BUT YOU SHOULD BE ABLE TO FLIP THE 1ST ONE BACK OVER
+// UNTIL YOU'VE FLIPPED A SECOND ONE. 
+
+  if (globalDecks[0].checkSelectedCards() !== true) {
+  // if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() !== true) {
+// nothing happens until user clicks each one and it flips back over.
+// when user clicks to flip back over: same event listener
+// img should change back
+// card should be removed from selectedCards array
+  clickFrontOfCard(event);
+  }
+}
+
+function clickFrontOfCard(event) {
+  event.target.src = 'assetsja/j-card.png.jpg';
+
+
+  // how do I remove this from the selectedCards array? i will need to match its cardId
+  // with the id to find the index.
+}
+
+
 
 function hideBothCards() {
   var firstCardId = globalDecks[0].selectedCards[0].id;
