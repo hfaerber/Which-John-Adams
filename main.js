@@ -54,6 +54,9 @@ function clickBackOfCard(event) {
   }
 }
 
+// 
+// ORIG FUNCTION WITH .LENGTH CONDITIONAL BUILT IN. THREW ERROR WHEN TRYING TO compare
+// CARDS THAT DIDNT MATCH
 // function runIfMatch() {
 //   if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() === true) {
 //     hideBothCards();
