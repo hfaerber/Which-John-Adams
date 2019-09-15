@@ -39,6 +39,7 @@ function clickDirPageBtn() {
 }
 
 function clickBackOfCard(event) {
+  // could call this pickTwoCards
   if (event.target.classList.contains('card') && globalDecks[0].selectedCards.length < 2) {
     event.target.src = event.target.dataset.imgsrc;
     var arrayOfCards = globalDecks[0].cards;
@@ -47,22 +48,25 @@ function clickBackOfCard(event) {
         globalDecks[0].selectedCards.push(arrayOfCards[i]);
       }
     }
-    if (globalDecks[0].selectedCards.length === 2) {
-      checkForMatch();
-    }
+    runIfMatch();
   }
 }
 
-function checkForMatch() {
-  if (globalDecks[0].checkSelectedCards() === true) {
-    var firstCardId = globalDecks[0].selectedCards[0].id;
-    var firstCard = document.getElementById(`${firstCardId}`);
-    firstCard.classList.add('hide-aside');
-    var secondCardId = globalDecks[0].selectedCards[1].id;
-    var secondCard = document.getElementById(`${secondCardId}`);
-    secondCard.classList.add('hide-aside');
+function runIfMatch() {
+  if (globalDecks[0].selectedCards.length === 2 && globalDecks[0].checkSelectedCards() === true) {
+    hideBothCards();
     globalDecks[0].moveToMatched();
+    countMatches();
   }
+}
+
+function hideBothCards() {
+  var firstCardId = globalDecks[0].selectedCards[0].id;
+  var firstCard = document.getElementById(`${firstCardId}`);
+  firstCard.classList.add('hide-aside');
+  var secondCardId = globalDecks[0].selectedCards[1].id;
+  var secondCard = document.getElementById(`${secondCardId}`);
+  secondCard.classList.add('hide-aside');
 }
 
 // **i could make this compare the matched boolean of each card
