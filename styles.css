@@ -36,24 +36,41 @@ main {
   border: 1px solid white;
 }
 
+p {
+  margin: 0;
+}
+
 aside {
   background-color: black;
   width: 89%;
   margin-top: 10%;
   display: flex;
   flex-direction: column;
-  font-size: 132%;
+  font-size: 142%;
   /* justify-content: center; */
   align-items: center;
   color: white;
 }
 
-p {
-  margin: 0;
+.aside-ps {
+  /* font-size: 104%; */
+  margin: 0% 0% 10% 0%;
+/* why isnt this on all the aside ps? */
+}
+
+.p1-match-count {
+  font-size: 397%;
+  font-weight: 700;
+  margin-bottom: 23px;
+  line-height: .9;
+}
+
+.p1-game-wins {
+  margin: 14% 0%;
 }
 
 h3 {
-  margin: 9% 0% 5% 0%;
+  margin: 7% 0% 5% 0%;
 }
 
 .left-aside {
@@ -74,7 +91,7 @@ h3 {
 .play-area {
   display: flex;
   justify-content: center;
-  padding: 10% 3%;
+  padding: 10% 0%;
 }
 
 .hide-able-form {
@@ -89,7 +106,7 @@ form {
   display: flex;
   flex-direction: column;
   /* border: 1px solid red; */
-  padding: 15px;
+  /* padding: 15px; */
   align-items: center;
   margin-top: 12%;
 }
@@ -99,7 +116,7 @@ form {
   flex-direction: row;
   justify-content: space-between;
   /* border: 1px solid blue; */
-  width: 61%;
+  width: 100%;
 }
 
 label {
@@ -112,27 +129,28 @@ label {
   flex-direction: column;
   /* border: 1px solid green; */
   width: 42%;
-  font-size: 147%;
+  font-size: 160%;
 }
 
 input[type=text] {
   width: 96%;
   font-family: 'Open Sans', sans-serif;
   font-size: 115%;
-  padding: 5px;
+  padding: 7px;
   border: 0;
+  margin-bottom: 2%;
 }
 
 .play-game-button {
   background-color: black;
   font-family: 'Open Sans', sans-serif;
-  width: 61%;
+  width: 100%;
   color: white;
   padding: 14px;
   font-size: 148%;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
-  margin-top: 8%;
+  margin-top: 12%;
   border: 0;
 }
 
@@ -141,11 +159,13 @@ input[type=text] {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   color: white;
-  padding: 8px;
+  padding: 10px;
   font-size: 91%;
   font-weight: 700;
   font-family: 'Open Sans', sans-serif;
-  margin-top: 8%;
+  margin: 5% 0%;
+
+  border: 0;
 }
 
 article {
@@ -161,7 +181,7 @@ article > p {
   font-size: 125%;
   font-weight: 700;
   text-align: center;
-  margin-top: 19%;
+  margin-top: 12%;
 }
 
 .hide-able-winner-page {
