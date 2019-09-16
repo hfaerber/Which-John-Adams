@@ -22,7 +22,7 @@ var endTime;
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
-playArea.addEventListener('click', clickCard);
+cardsView.addEventListener('click', clickCard);
 
 // EVENT HANDLERS
 
@@ -47,6 +47,7 @@ function clickDirPageBtn() {
 }
 
 function clickCard(event) {
+  console.log(event.target.dataset.cardid);
   if (event.target.classList.contains('card') && globalDecks[0].selectedCards.length < 2) {
     flipCardPhotoUp();
     addToSelectedCards();
@@ -72,8 +73,10 @@ function flipCardPhotoUp() {
 function addToSelectedCards() {
   var arrayOfCards = globalDecks[0].cards;
   for (var i = 0; i < arrayOfCards.length; i++) {
+    console.log(arrayOfCards[i].id);
     if (arrayOfCards[i].id === event.target.dataset.cardid) {
       globalDecks[0].selectedCards.push(arrayOfCards[i]);
+      console.log(globalDecks[0].selectedCards);
     }
   }
 }
@@ -112,16 +115,10 @@ function hideBothCards() {
 function instantiateCards(cardPhotos) {
   var instantiatedCards = [];
   for (var i = 0; i < cardPhotos.length; i++) {
-    var cardId = i
+  var cardId = i.toString();
     var matchInfo = cardPhotos[i]
     var card = new Card(cardId, matchInfo);
     instantiatedCards.push(card);
-
-  // for (var i = 0; i < cards.length; i++) {
-  //   var cardId = cards[i].dataset.cardid;
-  //   var matchInfo = cards[i].dataset.matchid;
-    // var card = new Card(cardId, matchInfo);
-    // instantiatedCards.push(card);
   }
   return instantiatedCards;
 }

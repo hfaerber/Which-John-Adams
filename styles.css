@@ -232,8 +232,12 @@ article > p {
 }
 
 .hide-able-cards {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  /* display: grid; */
+  /* grid-template-rows: 1fr 1fr 1fr; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .cards-row {
@@ -243,9 +247,10 @@ article > p {
 }
 
 .j-card {
-  width: 16%;
-  height: 67%;
+  width: 15%;
+  /* height: 67%; */
   cursor: pointer;
+  margin: 39px;
 }
 
 [data-cardid="1"] {
