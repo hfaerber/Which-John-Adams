@@ -10,14 +10,14 @@ var winnerName = document.getElementById('winner-name');
 var cardsView = document.querySelector('.hide-able-cards');
 var cards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
-var asides = document.querySelectorAll('.aside');
+// var asides = document.querySelectorAll('.aside');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
 var winnerView = document.querySelector('.hide-able-winner-page')
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
-playArea.addEventListener('click', clickBackOfCard);
+playArea.addEventListener('click', clickCard);
 
 // EVENT HANDLERS
 
@@ -29,42 +29,55 @@ function clickPlayGameBtn() {
     toggleMiddleView(formView, directionsView);
     updateSpan(player1Name);
   }
-  // make it so that it can't be blank spacing and still work
 }
 
 function clickDirPageBtn() {
   toggleMiddleView(directionsView, cardsView);
-  toggleAsideView(asides);
-  // instantiateCards(cards);
+  toggleAsideView();
   instantiateDeck();
   countMatches();
 }
 
-function clickBackOfCard(event) {
-  // could call this pickTwoCards
+function clickCard(event) {
   if (event.target.classList.contains('card') && globalDecks[0].selectedCards.length < 2) {
-    event.target.src = event.target.dataset.imgsrc;
-    event.target.classList.remove('card');
-    event.target.classList.add('photo');
-    var arrayOfCards = globalDecks[0].cards;
-    for (var i = 0; i < arrayOfCards.length; i++) {
-      if (arrayOfCards[i].id === event.target.dataset.cardid) {
-        globalDecks[0].selectedCards.push(arrayOfCards[i]);
-      }
-    }
+    flipCardPhotoUp();
+    addToSelectedCards();
     if (globalDecks[0].selectedCards.length === 2) {
       runIfMatch();
     }
   } else if (event.target.classList.contains('photo')) {
-      event.target.src = 'assetsja/j-card.png.jpg';
-      event.target.classList.remove('photo');
-      event.target.classList.add('card');
-      function wasClicked(element) {
-        return element.id === event.target.id;
-      }
-      var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
-      globalDecks[0].selectedCards.splice(indexToSplice, 1);
+      flipCardPhotoDown();
+      removeFromSelectedCards();
     }
+}
+
+function flipCardPhotoUp() {
+  event.target.src = event.target.dataset.imgsrc;
+  event.target.classList.remove('card');
+  event.target.classList.add('photo');
+}
+
+function addToSelectedCards() {
+  var arrayOfCards = globalDecks[0].cards;
+  for (var i = 0; i < arrayOfCards.length; i++) {
+    if (arrayOfCards[i].id === event.target.dataset.cardid) {
+      globalDecks[0].selectedCards.push(arrayOfCards[i]);
+    }
+  }
+}
+
+function flipCardPhotoDown() {
+  event.target.src = 'assetsja/j-card.png.jpg';
+  event.target.classList.remove('photo');
+  event.target.classList.add('card');
+}
+
+function removeFromSelectedCards() {
+  function wasClicked(element) {
+    return element.id === event.target.id;
+  }
+  var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
+  globalDecks[0].selectedCards.splice(indexToSplice, 1);
 }
 
 function runIfMatch() {
@@ -82,7 +95,6 @@ function hideBothCards() {
   var secondCardId = globalDecks[0].selectedCards[1].id;
   var secondCard = document.getElementById(`${secondCardId}`);
   secondCard.classList.add('hide-aside');
-  // **i could make this compare the matched boolean of each card
 }
 
 function instantiateCards(cards) {
@@ -101,23 +113,17 @@ function instantiateDeck() {
   var instCards = instantiateCards(cards);
   var deck = new Deck(deckId, instCards);
   globalDecks.unshift(deck);
-  // does this function need to return anything? not if i'm not using the deck yet
 }
-  // do i want to reassign the global array to the instantiated version of itself?
-// decided to create local array of instantiatedCards instead and return it
-// not sure yet if i need lines 47 52 and 54.  we'll see.
-// could I just documentQSAll the cards within the first line of this function?
-// if i do the cards arr locally i wouldnt need to pass through and arg.
 
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
 
 function toggleMiddleView(hidden, displayed) {
-  // element.hidden = !element.hidden;
   hidden.classList.add('hide-it');
   displayed.classList.remove('hide-it');
 }
 
-function toggleAsideView(asides) {
+function toggleAsideView() {
+  var asides = document.querySelectorAll('.aside');
   for (var i = 0; i < asides.length; i++) {
     if (asides[i].classList.contains('hide-aside')) {
       asides[i].classList.remove('hide-aside');
@@ -143,10 +149,6 @@ function countMatches() {
 
 function showWinnerPage(name) {
   toggleMiddleView(cardsView,winnerView);
-  toggleAsideView(asides);
-  // hide asides and .hide-able-cards sections
-  // unhide winnerpage section
-  // name = name.toUpperCase();
+  toggleAsideView();
   winnerName.innerText = `${name}`;
-  // update player1name span
 }
