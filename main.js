@@ -13,6 +13,9 @@ var playArea = document.querySelector('.play-area');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
 var winnerView = document.querySelector('.hide-able-winner-page')
+var startTime;
+var endTime;
+
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
@@ -35,6 +38,7 @@ function clickDirPageBtn() {
   toggleAsideView();
   instantiateDeck();
   countMatches();
+  startTimer();
 }
 
 function clickCard(event) {
@@ -48,6 +52,10 @@ function clickCard(event) {
       flipCardPhotoDown();
       removeFromSelectedCards();
     }
+}
+
+function startTimer() {
+  startTime = Date.now();
 }
 
 function flipCardPhotoUp() {
@@ -140,10 +148,20 @@ function updateSpan(name) {
 
 function countMatches() {
   if (globalDecks[0].matches === 5) {
+    endTime = Date.now();
+    calcTimeItTook();
     showWinnerPage(p1AsideNameSpan.innerText);
   } else {
     p1MatchCount.innerText = globalDecks[0].matches;
   }
+}
+
+function calcTimeItTook() {
+  var timeMillisecs = endTime - startTime;
+  var timeSecs = timeMillisecs / 1000
+  var timeMins = timeSecs / 60;
+  // var leftoverSecs =
+  console.log(timeMins);
 }
 
 function showWinnerPage(name) {
