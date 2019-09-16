@@ -40,8 +40,10 @@ function clickDirPageBtn() {
   toggleMiddleView(directionsView, cardsView);
   toggleAsideView();
   instantiateDeck();
+  // apply add html function
   countMatches();
   startTimer();
+  // shoudl be able to remove startTimer bc the deck id is this. (or remove deck.id)
 }
 
 function clickCard(event) {
@@ -77,7 +79,7 @@ function addToSelectedCards() {
 }
 
 function flipCardPhotoDown() {
-  event.target.src = 'assetsja/j-card.png.jpg';
+  event.target.src = 'assetsja/j-card.png';
   event.target.classList.remove('photo');
   event.target.classList.add('card');
 }
@@ -107,23 +109,42 @@ function hideBothCards() {
   secondCard.classList.add('hide-aside');
 }
 
-function instantiateCards(cards) {
+function instantiateCards(cardPhotos) {
   var instantiatedCards = [];
-  for (var i = 0; i < cards.length; i++) {
-    var cardId = cards[i].dataset.cardid;
-    var matchInfo = cards[i].dataset.matchid;
+  for (var i = 0; i < cardPhotos.length; i++) {
+    var cardId = i
+    var matchInfo = cardPhotos[i]
     var card = new Card(cardId, matchInfo);
     instantiatedCards.push(card);
+
+  // for (var i = 0; i < cards.length; i++) {
+  //   var cardId = cards[i].dataset.cardid;
+  //   var matchInfo = cards[i].dataset.matchid;
+    // var card = new Card(cardId, matchInfo);
+    // instantiatedCards.push(card);
   }
   return instantiatedCards;
 }
 
 function instantiateDeck() {
   var deckId = Date.now();
-  var instCards = instantiateCards(cards);
+  var instCards = instantiateCards(cardPhotos);
   var deck = new Deck(deckId, instCards);
   globalDecks.unshift(deck);
 }
+
+function applyCardHTML(arrayofInstCards) {
+  for (var i = 0; i < arrayOfInstCards; i++) {
+    var htmlToAdd = `<img data-cardid="${arrayOfInstCards[i].id}"
+    data-imgsrc="${arrayOfInstCards[i].matchInfo}"
+    class="card j-card" id="${arrayOfInstCards[i].id}" src="assetsja/j-card.png"
+    alt="back of card with letter j">`
+// does this html even need a regular id?  giving the same as dataset cardit just in case
+    cardsView.insertAdjacentHTML('afterbegin', htmlToAdd);
+    // do i need to run some kind of function to affect layout? masonry?
+  }
+}
+
 
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
 
