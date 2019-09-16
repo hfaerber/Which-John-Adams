@@ -151,4 +151,6 @@ function showWinnerPage(name) {
   toggleMiddleView(cardsView,winnerView);
   toggleAsideView();
   winnerName.innerText = `${name}`;
+  // querySelect #win-time and put in however long it took to get all 5 matches
+  // will need to start timer on first card click and end it on 5th match.
 }
