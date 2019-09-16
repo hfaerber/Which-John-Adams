@@ -40,7 +40,7 @@ function clickDirPageBtn() {
   toggleMiddleView(directionsView, cardsView);
   toggleAsideView();
   instantiateDeck();
-  // apply add html function
+  applyCardHTML(globalDecks[0].cards);
   countMatches();
   startTimer();
   // shoudl be able to remove startTimer bc the deck id is this. (or remove deck.id)
@@ -131,14 +131,15 @@ function instantiateDeck() {
   var instCards = instantiateCards(cardPhotos);
   var deck = new Deck(deckId, instCards);
   globalDecks.unshift(deck);
+  // shuffle deck cards
 }
 
-function applyCardHTML(arrayofInstCards) {
-  for (var i = 0; i < arrayOfInstCards; i++) {
-    var htmlToAdd = `<img data-cardid="${arrayOfInstCards[i].id}"
-    data-imgsrc="${arrayOfInstCards[i].matchInfo}"
-    class="card j-card" id="${arrayOfInstCards[i].id}" src="assetsja/j-card.png"
-    alt="back of card with letter j">`
+function applyCardHTML(instCards) {
+  for (var i = 0; i < instCards.length; i++) {
+    var htmlToAdd = `<img data-cardid="${instCards[i].id}"
+    data-imgsrc="${instCards[i].matchInfo}"
+    class="card j-card" id="${instCards[i].id}" src="assetsja/j-card.png"
+    alt="back of card with letter j">`;
 // does this html even need a regular id?  giving the same as dataset cardit just in case
     cardsView.insertAdjacentHTML('afterbegin', htmlToAdd);
     // do i need to run some kind of function to affect layout? masonry?
