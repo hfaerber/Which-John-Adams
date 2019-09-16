@@ -6,12 +6,14 @@ var formView = document.querySelector('.hide-able-form');
 var directionsView = document.querySelector('.game-directions');
 var p1NameSpan = document.querySelector('.p1-name');
 var p1AsideNameSpan = document.querySelector('.p1-aside-name');
+var winnerName = document.getElementById('winner-name');
 var cardsView = document.querySelector('.hide-able-cards');
 var cards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
 var asides = document.querySelectorAll('.aside');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
+var winnerView = document.querySelector('.hide-able-winner-page')
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
@@ -117,7 +119,11 @@ function toggleMiddleView(hidden, displayed) {
 
 function toggleAsideView(asides) {
   for (var i = 0; i < asides.length; i++) {
-    asides[i].classList.remove('hide-aside');
+    if (asides[i].classList.contains('hide-aside')) {
+      asides[i].classList.remove('hide-aside');
+    } else {
+    asides[i].classList.add('hide-aside');
+    }
   }
 }
 
@@ -129,14 +135,18 @@ function updateSpan(name) {
 
 function countMatches() {
   if (globalDecks[0].matches === 5) {
-    showWinnerPage();
+    showWinnerPage(p1AsideNameSpan.innerText);
   } else {
     p1MatchCount.innerText = globalDecks[0].matches;
   }
 }
 
-function showWinnerPage() {
+function showWinnerPage(name) {
+  toggleMiddleView(cardsView,winnerView);
+  toggleAsideView(asides);
   // hide asides and .hide-able-cards sections
   // unhide winnerpage section
+  // name = name.toUpperCase();
+  winnerName.innerText = `${name}`;
   // update player1name span
 }
