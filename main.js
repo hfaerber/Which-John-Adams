@@ -10,7 +10,6 @@ var winnerName = document.getElementById('winner-name');
 var cardsView = document.querySelector('.hide-able-cards');
 var cards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
-// var asides = document.querySelectorAll('.aside');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
 var winnerView = document.querySelector('.hide-able-winner-page')
