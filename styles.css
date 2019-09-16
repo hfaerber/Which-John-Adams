@@ -154,6 +154,7 @@ input[type=text] {
   font-family: 'Open Sans', sans-serif;
   margin-top: 12%;
   border: 0;
+  cursor: pointer;
 }
 
 .directions-page-play-button {
@@ -166,7 +167,7 @@ input[type=text] {
   font-weight: 700;
   font-family: 'Open Sans', sans-serif;
   margin: 5% 0%;
-
+  cursor: pointer;
   border: 0;
 }
 
@@ -244,6 +245,7 @@ article > p {
 .j-card {
   width: 16%;
   height: 67%;
+  cursor: pointer;
 }
 
 [data-cardid="1"] {

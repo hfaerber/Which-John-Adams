@@ -12,6 +12,9 @@ var cards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
+var cardPhotos = ['assetsja/hboja.jpg', 'assetsja/hboja.jpg', 'assetsja/ja.jpg',
+'assetsja/ja.jpg', 'assetsja/jqa.jpg', 'assetsja/jqa.jpg', 'assetsja/statue.jpg',
+'assetsja/statue.jpg', 'assetsja/ourja.jpg', 'assetsja/ourja.jpg'];
 var winnerView = document.querySelector('.hide-able-winner-page')
 var startTime;
 var endTime;
@@ -108,8 +111,8 @@ function instantiateCards(cards) {
   var instantiatedCards = [];
   for (var i = 0; i < cards.length; i++) {
     var cardId = cards[i].dataset.cardid;
-    var matchId = cards[i].dataset.matchid;
-    var card = new Card(cardId, matchId);
+    var matchInfo = cards[i].dataset.matchid;
+    var card = new Card(cardId, matchInfo);
     instantiatedCards.push(card);
   }
   return instantiatedCards;
