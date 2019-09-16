@@ -158,22 +158,17 @@ function countMatches() {
 
 function calcTimeItTook() {
   var timeMillisecs = endTime - startTime;
-  var timeSecs = timeMillisecs / 1000
-  var roundedTimeSecs = Math.round(timeSecs * 100)/100;
-
-  var timeMins = timeSecs / 60;
-  var roundedTimeMins = Math.round(timeMins);
-
-  var leftoverSecs = roundedTimeSecs % 60;
-
-  console.log(roundedTimeMins);
-  console.log(leftoverSecs);
+  var roundedTimeSecs = Math.round((timeMillisecs / 1000) * 100)/100;
+  var roundedTimeMins = Math.round(roundedTimeSecs / 60);
+  var remainderSecs = roundedTimeSecs % 60;
+  var winMin = document.getElementById('win-min');
+  var winSec = document.getElementById('win-sec');
+  winMin.innerText = roundedTimeMins;
+  winSec.innerText = Math.round(remainderSecs * 100)/100;
 }
 
 function showWinnerPage(name) {
   toggleMiddleView(cardsView,winnerView);
   toggleAsideView();
   winnerName.innerText = `${name}`;
-  // querySelect #win-min and win-sec and put in however long it took to get all 5 matches
-  // will need to start timer on first card click and end it on 5th match.
 }
