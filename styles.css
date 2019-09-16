@@ -58,14 +58,16 @@ aside {
 /* why isnt this on all the aside ps? */
 }
 
-.p1-match-count {
+.p1-match-count,
+.p2-match-count {
   font-size: 397%;
   font-weight: 700;
   margin-bottom: 0;
   line-height: .9;
 }
 
-.p1-game-wins {
+.p1-game-wins,
+.p2-game-wins {
   margin: 14% 0%;
 }
 
@@ -244,6 +246,38 @@ article > p {
   width: 16%;
   height: 67%;
 }
+
+[data-cardid="1"] {
+  transform: rotate(15deg);
+}
+[data-cardid="2"] {
+  transform: rotate(-26deg);
+}
+[data-cardid="3"] {
+  transform: rotate(-8deg);
+}
+[data-cardid="4"] {
+  transform: rotate(18deg);
+}
+[data-cardid="5"] {
+  transform: rotate(6deg);
+}
+[data-cardid="6"] {
+  transform: rotate(-13deg);
+}
+[data-cardid="7"] {
+  transform: rotate(8deg);
+}
+[data-cardid="8"] {
+  transform: rotate(25deg);
+}
+[data-cardid="9"] {
+  transform: rotate(-15deg);
+}
+[data-cardid="10"] {
+  transform: rotate(-9cddeg);
+}
+
 
 .hide-it {
   display: none;
