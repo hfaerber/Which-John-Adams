@@ -7,11 +7,10 @@ var directionsView = document.querySelector('.game-directions');
 var p1NameSpan = document.querySelector('.p1-name');
 var p1AsideNameSpan = document.querySelector('.p1-aside-name');
 var cardsView = document.querySelector('.hide-able-cards');
-// var allCards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
-var winners = [];
+var winners = getFromLS() || [];
 var cardPhotos = ['assetsja/john-adams-from-hbo-series.jpg', 'assetsja/john-adams-from-hbo-series.jpg', 'assetsja/president-john-adams.jpg',
 'assetsja/president-john-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/statue-of-john-adams.jpg',
 'assetsja/statue-of-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg'];
@@ -22,6 +21,8 @@ var endTime;
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
 cardsView.addEventListener('click', clickCard);
+
+
 
 // EVENT HANDLERS
 
@@ -229,8 +230,6 @@ function showWinnerPage(name) {
   var timesForLS = calcTimeItTook();
   var winnerStats = {winner: name, time: timesForLS[0], displaytime: timesForLS[1]};
   winners.push(winnerStats);
-  console.log(winnerStats);
-  console.log(winners);
   saveToLS();
 }
 
@@ -238,3 +237,29 @@ function saveToLS() {
   var stringifiedWinners = JSON.stringify(winners);
   localStorage.setItem('winnersList', stringifiedWinners);
 }
+
+function getFromLS() {
+  if ('winnersList' in localStorage) {
+    var retrievedWinners = localStorage.getItem('winnersList');
+    var parsedWinners = JSON.parse(retrievedWinners);
+    console.log(parsedWinners);
+    return parsedWinners;
+  }
+}
+
+function updateWinnerBoard() {
+  winners.sort(function(a,b) {
+    return a.time - b.time;
+  });
+  var winner1 = document.getElementById('name1');
+  var displayTime1 = document.getElementById('display-time1');
+  winner1.innerText = winners[0].winner;
+  displayTime1.innerText = winners[0].displaytime;
+}
+
+// function updateWinnerNameAndTime() {
+//   var winner1 = document.getElementById('name1');
+//   var displayTime1 = document.getElementById('display-time1');
+//   winner1.innerText = winners[0].winner;
+//   displayTime1.innerText = winners[0].displaytime;
+// }
