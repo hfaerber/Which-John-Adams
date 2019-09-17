@@ -1,5 +1,6 @@
 var playGameBtn = document.getElementById('play-game-button-js');
 var directionsPagePlayBtn = document.querySelector('.directions-page-play-button');
+var navMenuIcon = document.querySelector('.nav-icon');
 var p1InputField = document.getElementById('player1');
 var errorMsgP1 = document.getElementById('error-P1');
 var formView = document.querySelector('.hide-able-form');
@@ -21,20 +22,20 @@ var endTime;
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
 cardsView.addEventListener('click', clickCard);
+navMenuIcon.addEventListener('click', clickNavMenu);
 
 
 
 // EVENT HANDLERS
 
 function clickPlayGameBtn() {
-  player1Name = p1InputField.value.trim().toUpperCase();
+  var player1Name = p1InputField.value.trim().toUpperCase();
   if (player1Name.length === 0) {
     errorMsgP1.innerText = 'Error! Please enter name.'
   } else {
     toggleMiddleView(formView, directionsView);
     savePlayerName(player1Name);
     updateSpan(getPlayerName());
-    // i need to get the name value from LS and pass it through the arg on update span
   }
 }
 
@@ -65,6 +66,16 @@ function clickCard(event) {
       flipCardPhotoDown();
       removeFromSelectedCards();
     }
+}
+
+function clickNavMenu() {
+  var winnerBoard = document.querySelector('.winner-board');
+  if (winnerBoard.classList.contains('hide-it')) {
+    winnerBoard.classList.remove('hide-it');
+  } else {
+    winnerBoard.classList.add('hide-it');
+  }
+  updateWinnerBoard();
 }
 
 function startTimer() {
@@ -231,6 +242,7 @@ function showWinnerPage(name) {
   var winnerStats = {winner: name, time: timesForLS[0], displaytime: timesForLS[1]};
   winners.push(winnerStats);
   saveToLS();
+  // updateWinnerBoard();
 }
 
 function saveToLS() {
@@ -251,10 +263,14 @@ function updateWinnerBoard() {
   winners.sort(function(a,b) {
     return a.time - b.time;
   });
-  var winner1 = document.getElementById('name1');
-  var displayTime1 = document.getElementById('display-time1');
-  winner1.innerText = winners[0].winner;
-  displayTime1.innerText = winners[0].displaytime;
+  var winnerNames = document.querySelectorAll('.winner-board-name');
+  var displayTimes = document.querySelectorAll('.winner-board-time');
+  for (var i = 0; i < winners.length; i++) {
+    winnerNames[i].innerText = winners[i].winner;
+    winnerNames[i].classList.remove('hide-aside');
+    displayTimes[i].innerText = winners[i].displaytime;
+    displayTimes[i].classList.remove('hide-aside');
+  }
 }
 
 // function updateWinnerNameAndTime() {
