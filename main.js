@@ -27,12 +27,14 @@ cardsView.addEventListener('click', clickCard);
 // EVENT HANDLERS
 
 function clickPlayGameBtn() {
-  player1Name = p1InputField.value;
-  if (p1InputField.value.length === 0) {
+  player1Name = p1InputField.value.toUpperCase();
+  trimmedP1InputField = p1InputField.value.trim();
+  if (trimmedP1InputField.length === 0) {
     errorMsgP1.innerText = 'Error! Please enter name.'
   } else {
     toggleMiddleView(formView, directionsView);
     updateSpan(player1Name);
+    savePlayerName(player1Name);
   }
 }
 
@@ -179,9 +181,12 @@ function toggleAsideView() {
 }
 
 function updateSpan(name) {
-  name = name.toUpperCase();
   p1NameSpan.innerText = `${name}`;
   p1AsideNameSpan.innerText = `${name}`;
+}
+
+function savePlayerName(name) {
+  localStorage.setItem("userName", name);
 }
 
 function countMatches() {
