@@ -12,9 +12,9 @@ var cardsView = document.querySelector('.hide-able-cards');
 var playArea = document.querySelector('.play-area');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
-var cardPhotos = ['assetsja/hboja.jpg', 'assetsja/hboja.jpg', 'assetsja/ja.jpg',
-'assetsja/ja.jpg', 'assetsja/jqa.jpg', 'assetsja/jqa.jpg', 'assetsja/statue.jpg',
-'assetsja/statue.jpg', 'assetsja/ourja.jpg', 'assetsja/ourja.jpg'];
+var cardPhotos = ['assetsja/john-adams-from-hbo-series.jpg', 'assetsja/john-adams-from-hbo-series.jpg', 'assetsja/president-john-adams.jpg',
+'assetsja/president-john-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/statue-of-john-adams.jpg',
+'assetsja/statue-of-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg'];
 var winnerView = document.querySelector('.hide-able-winner-page')
 var startTime;
 var endTime;
