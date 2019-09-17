@@ -211,10 +211,9 @@ function calcTimeItTook() {
   var roundedTimeSecs = Math.round((timeMillisecs / 1000) * 100)/100;
   var roundedTimeMins = Math.round(roundedTimeSecs / 60);
   var remainderSecs = Math.round((roundedTimeSecs % 60) * 100)/100;
-  var winMin = document.getElementById('win-min');
-  var winSec = document.getElementById('win-sec');
-  winMin.innerText = roundedTimeMins;
-  winSec.innerText = remainderSecs;
+  var winTime = document.getElementById('win-time');
+  var winTimeDisplay = `${roundedTimeMins} min ${remainderSecs} sec`;
+  winTime.innerText = winTimeDisplay;
   return `${roundedTimeMins} min ${remainderSecs} sec`;
 }
 
@@ -224,7 +223,7 @@ function showWinnerPage(name) {
   toggleAsideView();
   winnerName.innerText = `${name}`;
 
-  var winnerStats = {winner: `${name}`, time: `${calcTimeItTook()}`};
+  var winnerStats = {winner: `${name}`, time: 2, displaytime: `${calcTimeItTook()}`};
   winners.push(winnerStats);
   console.log(winnerStats);
   console.log(winners);
