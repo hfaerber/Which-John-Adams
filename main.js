@@ -48,7 +48,6 @@ function clickDirPageBtn() {
 }
 
 function clickCard(event) {
-  console.log(event.target.dataset.cardid);
   if (event.target.classList.contains('card') && globalDecks[0].selectedCards.length < 2) {
     flipCardPhotoUp();
     addToSelectedCards();
@@ -67,6 +66,7 @@ function startTimer() {
 
 function flipCardPhotoUp() {
   event.target.src = event.target.dataset.imgsrc;
+  event.target.alt = `photo of ${event.target.dataset.imgsrc}`;
   event.target.classList.remove('card');
   event.target.classList.add('photo');
 }
@@ -74,16 +74,15 @@ function flipCardPhotoUp() {
 function addToSelectedCards() {
   var arrayOfCards = globalDecks[0].cards;
   for (var i = 0; i < arrayOfCards.length; i++) {
-    console.log(arrayOfCards[i].id);
     if (arrayOfCards[i].id === event.target.dataset.cardid) {
       globalDecks[0].selectedCards.push(arrayOfCards[i]);
-      console.log(globalDecks[0].selectedCards);
     }
   }
 }
 
 function flipCardPhotoDown() {
   event.target.src = 'assetsja/j-card.png';
+  event.target.alt = 'back of card with letter j';
   event.target.classList.remove('photo');
   event.target.classList.add('card');
 }
@@ -92,6 +91,7 @@ function flipBothCardsDown() {
   var flippedCards = document.querySelectorAll('.photo');
   for (var i = 0; i < flippedCards.length; i++) {
     flippedCards[i].src = 'assetsja/j-card.png';
+    flippedCards[i].alt = 'back of card with letter j';
     flippedCards[i].classList.remove('photo');
     flippedCards[i].classList.add('card');
   }
@@ -115,7 +115,7 @@ function runIfMatch() {
       flipBothCardsDown();
       globalDecks[0].selectedCards = [];
     }
-  }, 2500);
+  }, 2000);
 }
 
 function hideBothCards() {

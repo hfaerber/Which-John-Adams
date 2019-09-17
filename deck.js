@@ -8,8 +8,6 @@ class Deck {
   }
   shuffle() {
     var shuffledCards = this.cards.sort(() => Math.random() - 0.5);
-// the sorting function uses random number that is positive or negative to
-// randonmly reorder the elements in the array
     this.cards = shuffledCards;
     console.log(this.cards);
   }
