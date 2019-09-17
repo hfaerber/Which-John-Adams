@@ -8,7 +8,7 @@ var p1NameSpan = document.querySelector('.p1-name');
 var p1AsideNameSpan = document.querySelector('.p1-aside-name');
 var winnerName = document.getElementById('winner-name');
 var cardsView = document.querySelector('.hide-able-cards');
-var cards = document.querySelectorAll('.card');
+// var allCards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
@@ -40,6 +40,7 @@ function clickDirPageBtn() {
   toggleMiddleView(directionsView, cardsView);
   toggleAsideView();
   instantiateDeck();
+  globalDecks[0].shuffle();
   applyCardHTML(globalDecks[0].cards);
   countMatches();
   startTimer();
@@ -87,6 +88,15 @@ function flipCardPhotoDown() {
   event.target.classList.add('card');
 }
 
+function flipBothCardsDown() {
+  var flippedCards = document.querySelectorAll('.photo');
+  for (var i = 0; i < flippedCards.length; i++) {
+    flippedCards[i].src = 'assetsja/j-card.png';
+    flippedCards[i].classList.remove('photo');
+    flippedCards[i].classList.add('card');
+  }
+}
+
 function removeFromSelectedCards() {
   function wasClicked(element) {
     return element.id === event.target.id;
@@ -96,11 +106,16 @@ function removeFromSelectedCards() {
 }
 
 function runIfMatch() {
-  if (globalDecks[0].checkSelectedCards() === true) {
-    hideBothCards();
-    globalDecks[0].moveToMatched();
-    countMatches();
-  }
+  setTimeout(function(){
+    if (globalDecks[0].checkSelectedCards() === true) {
+      hideBothCards();
+      globalDecks[0].moveToMatched();
+      countMatches();
+    } else {
+      flipBothCardsDown();
+      globalDecks[0].selectedCards = [];
+    }
+  }, 2500);
 }
 
 function hideBothCards() {
@@ -142,6 +157,7 @@ function applyCardHTML(instCards) {
     // do i need to run some kind of function to affect layout? masonry?
   }
 }
+
 
 
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
