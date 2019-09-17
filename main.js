@@ -23,7 +23,7 @@ playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
 cardsView.addEventListener('click', clickCard);
 navMenuIcon.addEventListener('click', clickNavMenu);
-
+winnerView.addEventListener('click', clickWinnerPageBtn);
 
 
 // EVENT HANDLERS
@@ -76,6 +76,11 @@ function clickNavMenu() {
     winnerBoard.classList.add('hide-it');
   }
   updateWinnerBoard();
+}
+
+function clickWinnerPageBtn() {
+  // if event.target is the new game button, it reloads the pge
+  // if event,target is the rematch button, nothing happens yet
 }
 
 function startTimer() {
