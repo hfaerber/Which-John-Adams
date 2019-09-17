@@ -7,7 +7,11 @@ class Deck {
     this.matches = 0;
   }
   shuffle() {
-
+    var shuffledCards = this.cards.sort(() => Math.random() - 0.5);
+// the sorting function uses random number that is positive or negative to
+// randonmly reorder the elements in the array
+    this.cards = shuffledCards;
+    console.log(this.cards);
   }
   checkSelectedCards() {
     if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
