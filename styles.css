@@ -15,6 +15,7 @@ header {
 
 .nav-icon {
   width: 95px;
+  cursor: pointer;
 }
 
 h1 {
@@ -27,12 +28,9 @@ main {
   grid-template-areas:
     "left middle right";
   grid-template-columns: 1fr 3fr 1fr;
-
   background-image: url("assetsja/backgroundjohnadams.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  /* height: 120vh; */
-  /* overflow: scroll; */
 }
 
 p {
@@ -170,7 +168,7 @@ input[type=text] {
   font-size: 148%;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
-  margin: 12% 0% 34% 0%;
+  margin: 12% 0% 36% 0%;
   border: 0;
   cursor: pointer;
 }
@@ -207,7 +205,7 @@ article > p {
   font-size: 125%;
   font-weight: 700;
   text-align: center;
-  margin-top: 12%;
+  margin-top: 9%;
 }
 
 .hide-able-winner-page {
@@ -306,7 +304,6 @@ article > p {
 [data-cardid="10"] {
   transform: rotate(-9deg);
 }
-
 
 .hide-it {
   display: none;
