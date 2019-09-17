@@ -121,7 +121,8 @@ function runIfMatch() {
       flipBothCardsDown();
       globalDecks[0].selectedCards = [];
     }
-  }, 2000);
+  }, 1000);
+  // was 2000 but changed for development only
 }
 
 function hideBothCards() {
@@ -214,7 +215,8 @@ function calcTimeItTook() {
   var winTime = document.getElementById('win-time');
   var winTimeDisplay = `${roundedTimeMins} min ${remainderSecs} sec`;
   winTime.innerText = winTimeDisplay;
-  return `${roundedTimeMins} min ${remainderSecs} sec`;
+  var timesForLS = [timeMillisecs, winTimeDisplay];
+  return timesForLS;
 }
 
 function showWinnerPage(name) {
@@ -223,7 +225,9 @@ function showWinnerPage(name) {
   toggleAsideView();
   winnerName.innerText = `${name}`;
 
-  var winnerStats = {winner: `${name}`, time: 2, displaytime: `${calcTimeItTook()}`};
+
+  var timesForLS = calcTimeItTook();
+  var winnerStats = {winner: name, time: timesForLS[0], displaytime: timesForLS[1]};
   winners.push(winnerStats);
   console.log(winnerStats);
   console.log(winners);
