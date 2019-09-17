@@ -1,8 +1,8 @@
 var playGameBtn = document.getElementById('play-game-button-js');
 var directionsPagePlayBtn = document.querySelector('.directions-page-play-button');
 var navMenuIcon = document.querySelector('.nav-icon');
-var p1InputField = document.getElementById('player1');
-var errorMsgP1 = document.getElementById('error-P1');
+// var p1InputField = document.getElementById('player1');
+// var errorMsgP1 = document.getElementById('error-P1');
 var formView = document.querySelector('.hide-able-form');
 var directionsView = document.querySelector('.game-directions');
 var p1NameSpan = document.querySelector('.p1-name');
@@ -29,12 +29,16 @@ winnerView.addEventListener('click', clickWinnerPageBtn);
 // EVENT HANDLERS
 
 function clickPlayGameBtn() {
-  var player1Name = p1InputField.value.trim().toUpperCase();
-  if (player1Name.length === 0) {
-    errorMsgP1.innerText = 'Error! Please enter name.'
+  var p1Name = document.getElementById('player1').value.trim().toUpperCase();
+  var p2Name = document.getElementById('player2').value.trim().toUpperCase();
+  if (p1Name.length === 0) {
+    document.getElementById('error-P1').innerText = 'Error! Please enter name.'
+  }
+  if (p2Name.length === 0) {
+    document.getElementById('error-P2').innerText = 'Error! Please enter name.'
   } else {
     toggleMiddleView(formView, directionsView);
-    savePlayerName(player1Name);
+    savePlayerName(p1Name);
     updateSpan(getPlayerName());
   }
 }
@@ -79,8 +83,9 @@ function clickNavMenu() {
 }
 
 function clickWinnerPageBtn() {
-  // if event.target is the new game button, it reloads the pge
-  // if event,target is the rematch button, nothing happens yet
+  if (event.target.id === ('new-game-btn')) {
+    location.reload();
+  }
 }
 
 function startTimer() {
@@ -139,7 +144,7 @@ function runIfMatch() {
       globalDecks[0].selectedCards = [];
     }
   }, 1000);
-  // was 2000 but changed for development only
+  // was 1500 but changed for development only
 }
 
 function hideBothCards() {
@@ -203,7 +208,6 @@ function toggleAsideView() {
 function updateSpan(name) {
   p1NameSpan.innerText = `${name}`;
   p1AsideNameSpan.innerText = `${name}`;
-
 }
 
 function savePlayerName(name) {
@@ -214,11 +218,7 @@ function countMatches() {
   if (globalDecks[0].matches === 5) {
     endTime = Date.now();
     calcTimeItTook();
-
     showWinnerPage(getPlayerName());
-
-
-
   } else {
     p1MatchCount.innerText = globalDecks[0].matches;
   }
@@ -247,7 +247,6 @@ function showWinnerPage(name) {
   var winnerStats = {winner: name, time: timesForLS[0], displaytime: timesForLS[1]};
   winners.push(winnerStats);
   saveToLS();
-  // updateWinnerBoard();
 }
 
 function saveToLS() {
@@ -270,17 +269,19 @@ function updateWinnerBoard() {
   });
   var winnerNames = document.querySelectorAll('.winner-board-name');
   var displayTimes = document.querySelectorAll('.winner-board-time');
-  for (var i = 0; i < winners.length; i++) {
-    winnerNames[i].innerText = winners[i].winner;
-    winnerNames[i].classList.remove('hide-aside');
-    displayTimes[i].innerText = winners[i].displaytime;
-    displayTimes[i].classList.remove('hide-aside');
+  if (winners.length < 5) {
+    for (var i = 0; i < winners.length; i++) {
+      winnerNames[i].innerText = winners[i].winner;
+      winnerNames[i].classList.remove('hide-aside');
+      displayTimes[i].innerText = winners[i].displaytime;
+      displayTimes[i].classList.remove('hide-aside');
+    }
+  } else {
+    for (var i = 0; i < 5; i++) {
+      winnerNames[i].innerText = winners[i].winner;
+      winnerNames[i].classList.remove('hide-aside');
+      displayTimes[i].innerText = winners[i].displaytime;
+      displayTimes[i].classList.remove('hide-aside');
+    }
   }
 }
-
-// function updateWinnerNameAndTime() {
-//   var winner1 = document.getElementById('name1');
-//   var displayTime1 = document.getElementById('display-time1');
-//   winner1.innerText = winners[0].winner;
-//   displayTime1.innerText = winners[0].displaytime;
-// }
