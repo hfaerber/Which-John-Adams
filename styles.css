@@ -47,6 +47,7 @@ p {
   text-align: center;
   font-size: 134%;
   border: 2px solid black;
+  padding-bottom: 1%;
   /* display: none; */
 }
 
