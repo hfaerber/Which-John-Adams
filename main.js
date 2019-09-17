@@ -6,19 +6,18 @@ var formView = document.querySelector('.hide-able-form');
 var directionsView = document.querySelector('.game-directions');
 var p1NameSpan = document.querySelector('.p1-name');
 var p1AsideNameSpan = document.querySelector('.p1-aside-name');
-var winnerName = document.getElementById('winner-name');
 var cardsView = document.querySelector('.hide-able-cards');
 // var allCards = document.querySelectorAll('.card');
 var playArea = document.querySelector('.play-area');
 var p1MatchCount = document.querySelector('.p1-match-count');
 var globalDecks = [];
+var winners = [];
 var cardPhotos = ['assetsja/john-adams-from-hbo-series.jpg', 'assetsja/john-adams-from-hbo-series.jpg', 'assetsja/president-john-adams.jpg',
 'assetsja/president-john-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/statue-of-john-adams.jpg',
 'assetsja/statue-of-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg'];
 var winnerView = document.querySelector('.hide-able-winner-page')
 var startTime;
 var endTime;
-
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
 directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
@@ -27,15 +26,20 @@ cardsView.addEventListener('click', clickCard);
 // EVENT HANDLERS
 
 function clickPlayGameBtn() {
-  player1Name = p1InputField.value.toUpperCase();
-  trimmedP1InputField = p1InputField.value.trim();
-  if (trimmedP1InputField.length === 0) {
+  player1Name = p1InputField.value.trim().toUpperCase();
+  if (player1Name.length === 0) {
     errorMsgP1.innerText = 'Error! Please enter name.'
   } else {
     toggleMiddleView(formView, directionsView);
-    updateSpan(player1Name);
     savePlayerName(player1Name);
+    updateSpan(getPlayerName());
+    // i need to get the name value from LS and pass it through the arg on update span
   }
+}
+
+function getPlayerName() {
+  var retrievedName = localStorage.getItem('P1Name');
+  return retrievedName;
 }
 
 function clickDirPageBtn() {
@@ -160,8 +164,6 @@ function applyCardHTML(instCards) {
   }
 }
 
-
-
 // SRP FUNCTIONS TO INVOKE IN HANDLERS
 
 function toggleMiddleView(hidden, displayed) {
@@ -183,17 +185,22 @@ function toggleAsideView() {
 function updateSpan(name) {
   p1NameSpan.innerText = `${name}`;
   p1AsideNameSpan.innerText = `${name}`;
+
 }
 
 function savePlayerName(name) {
-  localStorage.setItem("userName", name);
+  localStorage.setItem("P1Name", name);
 }
 
 function countMatches() {
   if (globalDecks[0].matches === 5) {
     endTime = Date.now();
     calcTimeItTook();
-    showWinnerPage(p1AsideNameSpan.innerText);
+
+    showWinnerPage(getPlayerName());
+
+
+
   } else {
     p1MatchCount.innerText = globalDecks[0].matches;
   }
@@ -203,15 +210,28 @@ function calcTimeItTook() {
   var timeMillisecs = endTime - startTime;
   var roundedTimeSecs = Math.round((timeMillisecs / 1000) * 100)/100;
   var roundedTimeMins = Math.round(roundedTimeSecs / 60);
-  var remainderSecs = roundedTimeSecs % 60;
+  var remainderSecs = Math.round((roundedTimeSecs % 60) * 100)/100;
   var winMin = document.getElementById('win-min');
   var winSec = document.getElementById('win-sec');
   winMin.innerText = roundedTimeMins;
-  winSec.innerText = Math.round(remainderSecs * 100)/100;
+  winSec.innerText = remainderSecs;
+  return `${roundedTimeMins} min ${remainderSecs} sec`;
 }
 
 function showWinnerPage(name) {
+  var winnerName = document.getElementById('winner-name');
   toggleMiddleView(cardsView,winnerView);
   toggleAsideView();
   winnerName.innerText = `${name}`;
+
+  var winnerStats = {winner: `${name}`, time: `${calcTimeItTook()}`};
+  winners.push(winnerStats);
+  console.log(winnerStats);
+  console.log(winners);
+  saveToLS();
+}
+
+function saveToLS() {
+  var stringifiedWinners = JSON.stringify(winners);
+  localStorage.setItem('winnersList', stringifiedWinners);
 }

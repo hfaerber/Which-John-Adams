@@ -46,6 +46,8 @@ p {
   width: 19%;
   text-align: center;
   font-size: 134%;
+  border: 2px solid black;
+  /* display: none; */
 }
 
 .black-lines {
@@ -236,7 +238,7 @@ article > p {
   /* border: 1px solid blue; */
   display: flex;
   justify-content: space-between;
-
+  margin-bottom: 38%;
 }
 
 .winner-page-btn {
@@ -300,7 +302,7 @@ article > p {
   transform: rotate(-15deg);
 }
 [data-cardid="10"] {
-  transform: rotate(-9cddeg);
+  transform: rotate(-9deg);
 }
 
 
