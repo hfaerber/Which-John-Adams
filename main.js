@@ -1,32 +1,26 @@
 var playGameBtn = document.getElementById('play-game-button-js');
-var directionsPagePlayBtn = document.querySelector('.directions-page-play-button');
+var directionsPlayBtn = document.querySelector('.directions-page-play-button');
+var cardsView = document.querySelector('.hide-able-cards');
 var navMenuIcon = document.querySelector('.nav-icon');
-// var p1InputField = document.getElementById('player1');
-// var errorMsgP1 = document.getElementById('error-P1');
+var winnerView = document.querySelector('.hide-able-winner-page')
 var formView = document.querySelector('.hide-able-form');
 var directionsView = document.querySelector('.game-directions');
-var p1NameSpan = document.querySelector('.p1-name');
-var p1AsideNameSpan = document.querySelector('.p1-aside-name');
-var cardsView = document.querySelector('.hide-able-cards');
-var playArea = document.querySelector('.play-area');
-var p1MatchCount = document.getElementById('p1-match-count');
 var globalDecks = [];
 var winners = getFromLS() || [];
-var cardPhotos = ['assetsja/john-adams-from-hbo-series.jpg', 'assetsja/john-adams-from-hbo-series.jpg', 'assetsja/president-john-adams.jpg',
-'assetsja/president-john-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/john-quincy-adams.jpg', 'assetsja/statue-of-john-adams.jpg',
-'assetsja/statue-of-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg'];
-var winnerView = document.querySelector('.hide-able-winner-page')
+var cardPhotos = ['assetsja/john-adams-from-hbo-series.jpg',
+'assetsja/john-adams-from-hbo-series.jpg', 'assetsja/president-john-adams.jpg',
+'assetsja/president-john-adams.jpg', 'assetsja/john-quincy-adams.jpg',
+'assetsja/john-quincy-adams.jpg', 'assetsja/statue-of-john-adams.jpg',
+'assetsja/statue-of-john-adams.jpg', 'assetsja/our-friend-john-adams.jpg',
+'assetsja/our-friend-john-adams.jpg'];
 var startTime;
 var endTime;
 
 playGameBtn.addEventListener('click', clickPlayGameBtn);
-directionsPagePlayBtn.addEventListener('click', clickDirPageBtn);
+directionsPlayBtn.addEventListener('click', clickDirPageBtn);
 cardsView.addEventListener('click', clickCard);
 navMenuIcon.addEventListener('click', clickNavMenu);
 winnerView.addEventListener('click', clickWinnerPageBtn);
-
-
-// EVENT HANDLERS
 
 function clickPlayGameBtn() {
   var p1Name = document.getElementById('player1').value.trim().toUpperCase();
@@ -43,11 +37,6 @@ function clickPlayGameBtn() {
   }
 }
 
-function getPlayerName() {
-  var retrievedName = localStorage.getItem('P1Name');
-  return retrievedName;
-}
-
 function clickDirPageBtn() {
   toggleMiddleView(directionsView, cardsView);
   toggleAsideView();
@@ -56,7 +45,6 @@ function clickDirPageBtn() {
   applyCardHTML(globalDecks[0].cards);
   countMatches();
   startTimer();
-  // shoudl be able to remove startTimer bc the deck id is this. (or remove deck.id)
 }
 
 function clickCard(event) {
@@ -88,72 +76,34 @@ function clickWinnerPageBtn() {
   }
 }
 
-function startTimer() {
-  startTime = Date.now();
+function toggleMiddleView(hidden, displayed) {
+  hidden.classList.add('hide-it');
+  displayed.classList.remove('hide-it');
 }
 
-function flipCardPhotoUp() {
-  event.target.src = event.target.dataset.imgsrc;
-  event.target.alt = `photo of ${event.target.dataset.imgsrc}`;
-  event.target.classList.remove('card');
-  event.target.classList.add('photo');
+function savePlayerName(name) {
+  localStorage.setItem("P1Name", name);
 }
 
-function addToSelectedCards() {
-  var arrayOfCards = globalDecks[0].cards;
-  for (var i = 0; i < arrayOfCards.length; i++) {
-    if (arrayOfCards[i].id === event.target.dataset.cardid) {
-      globalDecks[0].selectedCards.push(arrayOfCards[i]);
-    }
-  }
+function updateSpan(name) {
+  document.querySelector('.p1-name').innerText = `${name}`;
+  document.querySelector('.p1-aside-name').innerText = `${name}`;
 }
 
-function flipCardPhotoDown() {
-  event.target.src = 'assetsja/j-card.png';
-  event.target.alt = 'back of card with letter j';
-  event.target.classList.remove('photo');
-  event.target.classList.add('card');
+function getPlayerName() {
+  var retrievedName = localStorage.getItem('P1Name');
+  return retrievedName;
 }
 
-function flipBothCardsDown() {
-  var flippedCards = document.querySelectorAll('.photo');
-  for (var i = 0; i < flippedCards.length; i++) {
-    flippedCards[i].src = 'assetsja/j-card.png';
-    flippedCards[i].alt = 'back of card with letter j';
-    flippedCards[i].classList.remove('photo');
-    flippedCards[i].classList.add('card');
-  }
-}
-
-function removeFromSelectedCards() {
-  function wasClicked(element) {
-    return element.id === event.target.id;
-  }
-  var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
-  globalDecks[0].selectedCards.splice(indexToSplice, 1);
-}
-
-function runIfMatch() {
-  setTimeout(function(){
-    if (globalDecks[0].checkSelectedCards() === true) {
-      hideBothCards();
-      globalDecks[0].moveToMatched();
-      countMatches();
+function toggleAsideView() {
+  var asides = document.querySelectorAll('.aside');
+  for (var i = 0; i < asides.length; i++) {
+    if (asides[i].classList.contains('hide-aside')) {
+      asides[i].classList.remove('hide-aside');
     } else {
-      flipBothCardsDown();
-      globalDecks[0].selectedCards = [];
+    asides[i].classList.add('hide-aside');
     }
-  }, 1000);
-  // was 1500 but changed for development only
-}
-
-function hideBothCards() {
-  var firstCardId = globalDecks[0].selectedCards[0].id;
-  var firstCard = document.getElementById(`${firstCardId}`);
-  firstCard.classList.add('hide-aside');
-  var secondCardId = globalDecks[0].selectedCards[1].id;
-  var secondCard = document.getElementById(`${secondCardId}`);
-  secondCard.classList.add('hide-aside');
+  }
 }
 
 function instantiateCards(cardPhotos) {
@@ -172,7 +122,6 @@ function instantiateDeck() {
   var instCards = instantiateCards(cardPhotos);
   var deck = new Deck(deckId, instCards);
   globalDecks.unshift(deck);
-  // shuffle deck cards
 }
 
 function applyCardHTML(instCards) {
@@ -181,37 +130,8 @@ function applyCardHTML(instCards) {
     data-imgsrc="${instCards[i].matchInfo}"
     class="card j-card" id="${instCards[i].id}" src="assetsja/j-card.png"
     alt="back of card with letter j">`;
-// does this html even need a regular id?  giving the same as dataset cardit just in case
     cardsView.insertAdjacentHTML('afterbegin', htmlToAdd);
-    // do i need to run some kind of function to affect layout? masonry?
   }
-}
-
-// SRP FUNCTIONS TO INVOKE IN HANDLERS
-
-function toggleMiddleView(hidden, displayed) {
-  hidden.classList.add('hide-it');
-  displayed.classList.remove('hide-it');
-}
-
-function toggleAsideView() {
-  var asides = document.querySelectorAll('.aside');
-  for (var i = 0; i < asides.length; i++) {
-    if (asides[i].classList.contains('hide-aside')) {
-      asides[i].classList.remove('hide-aside');
-    } else {
-    asides[i].classList.add('hide-aside');
-    }
-  }
-}
-
-function updateSpan(name) {
-  p1NameSpan.innerText = `${name}`;
-  p1AsideNameSpan.innerText = `${name}`;
-}
-
-function savePlayerName(name) {
-  localStorage.setItem("P1Name", name);
 }
 
 function countMatches() {
@@ -220,6 +140,7 @@ function countMatches() {
     calcTimeItTook();
     showWinnerPage(getPlayerName());
   } else {
+    var p1MatchCount = document.getElementById('p1-match-count');
     p1MatchCount.innerText = globalDecks[0].matches;
   }
 }
@@ -241,8 +162,6 @@ function showWinnerPage(name) {
   toggleMiddleView(cardsView,winnerView);
   toggleAsideView();
   winnerName.innerText = `${name}`;
-
-
   var timesForLS = calcTimeItTook();
   var winnerStats = {winner: name, time: timesForLS[0], displaytime: timesForLS[1]};
   winners.push(winnerStats);
@@ -254,13 +173,71 @@ function saveToLS() {
   localStorage.setItem('winnersList', stringifiedWinners);
 }
 
-function getFromLS() {
-  if ('winnersList' in localStorage) {
-    var retrievedWinners = localStorage.getItem('winnersList');
-    var parsedWinners = JSON.parse(retrievedWinners);
-    console.log(parsedWinners);
-    return parsedWinners;
+function startTimer() {
+  startTime = Date.now();
+}
+
+function flipCardPhotoUp() {
+  event.target.src = event.target.dataset.imgsrc;
+  event.target.alt = `photo of ${event.target.dataset.imgsrc}`;
+  event.target.classList.remove('card');
+  event.target.classList.add('photo');
+}
+
+function addToSelectedCards() {
+  var arrayOfCards = globalDecks[0].cards;
+  for (var i = 0; i < arrayOfCards.length; i++) {
+    if (arrayOfCards[i].id === event.target.dataset.cardid) {
+      globalDecks[0].selectedCards.push(arrayOfCards[i]);
+    }
   }
+}
+
+function runIfMatch() {
+  setTimeout(function(){
+    if (globalDecks[0].checkSelectedCards() === true) {
+      hideBothCards();
+      globalDecks[0].moveToMatched();
+      countMatches();
+    } else {
+      flipBothCardsDown();
+      globalDecks[0].selectedCards = [];
+    }
+  }, 1000);
+}
+
+function hideBothCards() {
+  var firstCardId = globalDecks[0].selectedCards[0].id;
+  var firstCard = document.getElementById(`${firstCardId}`);
+  firstCard.classList.add('hide-aside');
+  var secondCardId = globalDecks[0].selectedCards[1].id;
+  var secondCard = document.getElementById(`${secondCardId}`);
+  secondCard.classList.add('hide-aside');
+}
+
+function flipBothCardsDown() {
+  var flippedCards = document.querySelectorAll('.photo');
+  for (var i = 0; i < flippedCards.length; i++) {
+    flippedCards[i].src = 'assetsja/j-card.png';
+    flippedCards[i].alt = 'back of card with letter j';
+    flippedCards[i].classList.remove('photo');
+    flippedCards[i].classList.add('card');
+  }
+}
+
+function flipCardPhotoDown() {
+  event.target.src = 'assetsja/j-card.png';
+  event.target.alt = 'back of card with letter j';
+  event.target.classList.remove('photo');
+  event.target.classList.add('card');
+}
+
+function removeFromSelectedCards() {
+  function wasClicked(element) {
+    return element.id === event.target.id;
+  }
+  var indexToSplice = globalDecks[0].selectedCards.findIndex(wasClicked);
+  globalDecks[0].selectedCards.splice(indexToSplice, 1);
 }
 
 function updateWinnerBoard() {
@@ -283,5 +260,14 @@ function updateWinnerBoard() {
       displayTimes[i].innerText = winners[i].displaytime;
       displayTimes[i].classList.remove('hide-aside');
     }
+  }
+}
+
+function getFromLS() {
+  if ('winnersList' in localStorage) {
+    var retrievedWinners = localStorage.getItem('winnersList');
+    var parsedWinners = JSON.parse(retrievedWinners);
+    console.log(parsedWinners);
+    return parsedWinners;
   }
 }
