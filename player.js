@@ -1,6 +1,6 @@
 class Player {
-  constructor() {
-    this.name =
+  constructor(name) {
+    this.name = name;
     this.matchCount = 0;
   }
   findMatch() {

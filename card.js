@@ -4,7 +4,7 @@ class Card {
     this.matchInfo = matchInfo;
     this.matched = false;
   }
- match() {
+  match() {
    this.matched = true;
  }
 }
