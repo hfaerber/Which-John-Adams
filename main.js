@@ -33,6 +33,7 @@ function clickPlayGameBtn() {
   } else {
     toggleMiddleView(formView, directionsView);
     savePlayerName(p1Name);
+    // savePlayerName(p1Name, p2Name);
     updateSpan(getPlayerName());
   }
 }
@@ -84,6 +85,21 @@ function toggleMiddleView(hidden, displayed) {
 function savePlayerName(name) {
   localStorage.setItem("P1Name", name);
 }
+// function savePlayerName(name1, name2) {
+//   var players = [name1, name2];
+//   var instantiatedPlayers = instantiatePlayers(players);
+//   localStorage.setItem("playersLS", instantiatedPlayers);
+// }
+
+function instantiatePlayers(players) {
+  var instantiatedPlayers = [];
+  for (var i = 0; i < players.length; i++) {
+    var name = players[i];
+    var player = new Player(name);
+    instantiatedPlayers.push(player);
+  }
+  return instantiatedPlayers;
+}
 
 function updateSpan(name) {
   document.querySelector('.p1-name').innerText = `${name}`;
@@ -109,7 +125,7 @@ function toggleAsideView() {
 function instantiateCards(cardPhotos) {
   var instantiatedCards = [];
   for (var i = 0; i < cardPhotos.length; i++) {
-  var cardId = i.toString();
+    var cardId = i.toString();
     var matchInfo = cardPhotos[i]
     var card = new Card(cardId, matchInfo);
     instantiatedCards.push(card);
