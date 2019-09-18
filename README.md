@@ -19,7 +19,7 @@ CSS3, HTML5 and vanilla JavaScript were used for this project.
 
 ![My App Directions Page](assets/my-app-directions-page.png)
 
-![My App Cards Page](assets/my-app-cards-screen.png)
+![My App Cards Page](assets/my-app-cards-page.png)
 
 ![My App Winner Page](assets/my-app-winner-page-with-winner-board.png)
 
