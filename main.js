@@ -185,10 +185,10 @@ function flipCardPhotoUp() {
 }
 
 function addToSelectedCards() {
-  var arrayOfCards = globalDecks[0].cards;
-  for (var i = 0; i < arrayOfCards.length; i++) {
-    if (arrayOfCards[i].id === event.target.dataset.cardid) {
-      globalDecks[0].selectedCards.push(arrayOfCards[i]);
+  var deckCards = globalDecks[0].cards;
+  for (var i = 0; i < deckCards.length; i++) {
+    if (deckCards[i].id === event.target.dataset.cardid) {
+      globalDecks[0].selectedCards.push(deckCards[i]);
     }
   }
 }
