@@ -125,12 +125,21 @@ function instantiateDeck() {
 }
 
 function applyCardHTML(instCards) {
+  var topRow = document.getElementById('card-row1');
+  var middleRow = document.getElementById('card-row2');
+  var bottomRow = document.getElementById('card-row3');
   for (var i = 0; i < instCards.length; i++) {
     var htmlToAdd = `<img data-cardid="${instCards[i].id}"
     data-imgsrc="${instCards[i].matchInfo}"
     class="card j-card" id="${instCards[i].id}" src="assetsja/j-card.png"
     alt="back of card with letter j">`;
-    cardsView.insertAdjacentHTML('afterbegin', htmlToAdd);
+    if (i < 3) {
+      topRow.insertAdjacentHTML('afterbegin', htmlToAdd);
+    } else if (i < 7) {
+      middleRow.insertAdjacentHTML('afterbegin', htmlToAdd);
+    } else {
+      bottomRow.insertAdjacentHTML('afterbegin', htmlToAdd);
+    }
   }
 }
 
