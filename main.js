@@ -33,7 +33,6 @@ function clickPlayGameBtn() {
   } else {
     toggleMiddleView(formView, directionsView);
     savePlayerName(p1Name);
-    // savePlayerName(p1Name, p2Name);
     updateSpan(getPlayerName());
   }
 }
@@ -85,11 +84,6 @@ function toggleMiddleView(hidden, displayed) {
 function savePlayerName(name) {
   localStorage.setItem("P1Name", name);
 }
-// function savePlayerName(name1, name2) {
-//   var players = [name1, name2];
-//   var instantiatedPlayers = instantiatePlayers(players);
-//   localStorage.setItem("playersLS", instantiatedPlayers);
-// }
 
 function instantiatePlayers(players) {
   var instantiatedPlayers = [];
@@ -292,7 +286,6 @@ function getFromLS() {
   if ('winnersList' in localStorage) {
     var retrievedWinners = localStorage.getItem('winnersList');
     var parsedWinners = JSON.parse(retrievedWinners);
-    console.log(parsedWinners);
     return parsedWinners;
   }
 }
