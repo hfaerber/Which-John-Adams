@@ -16,46 +16,41 @@
     </header>
     <main>
       <section class="winner-board hide-it">
-        <h3 class="top-5">Top 5 Winner Board</h3>
+        <h3>Top 5 Winner Board</h3>
         <p>#1</p>
-        <p><span class="name winner-board-name hide-aside" id="name1">NAME</span></p>
-        <p><span class="winner-board-time hide-aside" id="display-time1">Time</p>
+        <p><span class="winner-board-name hide-aside">NAME</span></p>
+        <p><span class="winner-board-time hide-aside">Time</p>
         <div class="black-lines"></div>
         <p>#2</p>
-        <p><span class="name winner-board-name hide-aside" id="name2">NAME</span></p>
-        <p><span class="winner-board-time hide-aside" id="display-time2">Time</p>
+        <p><span class="winner-board-name hide-aside">NAME</span></p>
+        <p><span class="winner-board-time hide-aside">Time</p>
         <div class="black-lines"></div>
         <p>#3</p>
-        <p><span class="name winner-board-name hide-aside" id="name3">NAME</span></p>
-        <p><span class="winner-board-time hide-aside" id="display-time3">Time</p>
+        <p><span class="winner-board-name hide-aside">NAME</span></p>
+        <p><span class="winner-board-time hide-aside">Time</p>
         <div class="black-lines"></div>
         <p>#4</p>
-        <p><span class="name winner-board-name hide-aside" id="name4">NAME</span></p>
-        <p><span class="winner-board-time hide-aside" id="display-time4">Time</p>
+        <p><span class="winner-board-name hide-aside">NAME</span></p>
+        <p><span class="winner-board-time hide-aside">Time</p>
         <div class="black-lines"></div>
         <p>#5</p>
-        <p><span class="name winner-board-name hide-aside" id="name5">NAME</span></p>
-        <p><span class="winner-board-time hide-aside" id="display-time5">Time</p>
+        <p><span class="winner-board-name hide-aside">NAME</span></p>
+        <p><span class="winner-board-time hide-aside">Time</p>
       </section>
-
-<!-- left aside hidable -->
       <aside class="aside left-aside hide-aside">
-        <h3 class="p1-aside-name" id="p1-aside-name-js">PLAYER 1 NAME</h3>
+        <h3 class="p1-aside-name">PLAYER 1 NAME</h3>
         <p class="aside-ps">#4 TOP PLAYER</p>
         <div class="white-lines">
           <p class="aside-ps">MATCHES THIS ROUND</p>
           <p class="p1-match-count aside-ps">5</p>
         </div>
-        <h3 class="p1-game-wins">GAME WINS</h3>
+        <h3 class="game-wins">GAME WINS</h3>
         <p>ROUND <span>1</span></p>
         <p class="aside-ps">125.75 SECONDS</p>
         <p>ROUND <span>4</span></p>
         <p class="aside-ps">63.98 SECONDS</p>
       </aside>
-
       <section class="play-area">
-
-<!-- load screen hideable section -->
         <section class="hide-able-form">
           <form>
             <div class="text-inputs-box">
@@ -70,76 +65,43 @@
                 <p class="error-msg" id="error-P2"> </p>
               </div>
             </div>
-            <input type="button" class="play-game-button" id="play-game-button-js" value="PLAY GAME">
+            <input type="button" class="play-game-button"
+              id="play-game-button-js" value="PLAY GAME">
           </form>
         </section>
-
-<!-- game directions hidable article -->
         <article class="game-directions hide-it">
-          <h2 class="named-greeting">WELCOME <span class="p1-name">PLAYER 1 NAME</span> AND
-            <span class="p2-name">PLAYER 2 NAME</span>!</h2>
+          <h2 class="named-greeting">WELCOME <span class="p1-name">PLAYER 1 NAME
+            </span> AND<span class="p2-name">PLAYER 2 NAME</span>!</h2>
           <p> The goal of the game is to find all 5 pairs of cards as quickly as
             possible. The player that finds the greatest numbers of pairs, wins.
           </p>
           <p> To begin playing, the player whose name is highlighted can click
             any card in the card pile. It will flip over and reveal a picture of
-            a John Adams. Click another card. If they match, they will disappear and
-            you will have com-pleted a match! If they don't, you'll have three
-            seconds to look at them before they flip back over. Then it's time
-            for the other player to try!
+            a John Adams. Click another card. If they match, they will disappear
+            and you will have completed a match! If they don't, you'll have
+            three seconds to look at them before they flip back over. Then it's
+            time for the other player to try!
           </p>
           <p>After you play, you'll see the name of the final winner and how
             long it took to win the game.</p>
-          <input type="button" class="directions-page-play-button" value="PLAY GAME">
+          <input type="button" class="directions-page-play-button"
+            value="PLAY GAME">
         </article>
-
-<!-- cards facedown hidable section -->
-
         <section class="hide-able-cards hide-it">
-          <!-- <div class="cards-row top-cards-row">
-            <img data-cardid="1" data-matchid="16" data-imgsrc="assetsja/hboja.jpg" class="card j-card"
-              id="1" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="2" data-matchid="27" data-imgsrc="assetsja/ja.jpg" class="card j-card"
-              id="2" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="3" data-matchid="38" data-imgsrc="assetsja/jqa.jpg" class="card j-card"
-              id="3" src="assetsja/j-card.png" alt="back of card with letter j">
-          </div>
-          <div class="cards-row mid-cards-row">
-            <img data-cardid="4" data-matchid="49" data-imgsrc="assetsja/statue.jpg" class="card j-card"
-              id="4" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="5" data-matchid="50" data-imgsrc="assetsja/ourja.jpg" class="card j-card"
-              id="5" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="6" data-matchid="16"data-imgsrc="assetsja/hboja.jpg" class="card j-card"
-              id="6" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="7" data-matchid="27" data-imgsrc="assetsja/ja.jpg" class="card j-card"
-              id="7" src="assetsja/j-card.png" alt="back of card with letter j">
-          </div>
-          <div class="cards-row bottom-cards-row">
-            <img data-cardid="8" data-matchid="38" data-imgsrc="assetsja/jqa.jpg" class="card j-card"
-              id="8" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="9" data-matchid="49" data-imgsrc="assetsja/statue.jpg" class="card j-card"
-              id="9" src="assetsja/j-card.png" alt="back of card with letter j">
-            <img data-cardid="10" data-matchid="50" data-imgsrc="assetsja/ourja.jpg" class="card j-card"
-              id="10" src="assetsja/j-card.png" alt="back of card with letter j">
-          </div> -->
         </section>
-
-<!-- winner page hidable section -->
-
         <section class="hide-able-winner-page hide-it">
           <h2 class="congrats-heading">CONGRATULATIONS,
             <span id="winner-name">PLAYER 1 NAME</span> WINS!</h2>
           <p class="took-you-text">It took you <span id="win-time"></span>.</p>
           <p class="to-keep-playing-text">Click below to keep playing.</p>
           <div class="new-rematch-button-box">
-            <input type="button" class="winner-page-btn" id="new-game-btn" value="NEW GAME">
-            <input type="button" class="winner-page-btn" id="rematch-btn" value="REMATCH">
+            <input type="button" class="winner-page-btn" id="new-game-btn"
+              value="NEW GAME">
+            <input type="button" class="winner-page-btn" id="rematch-btn"
+              value="REMATCH">
           </div>
         </section>
-
       </section>
-
-<!-- right aside hidable -->
       <aside class="aside right-aside hide-aside">
         <h3 class="p2-aside-name" id="p2-aside-name-js">PLAYER 2 NAME</h3>
         <p class="aside-ps">#4 TOP PLAYER</p>
@@ -147,14 +109,12 @@
           <p class="aside-ps">MATCHES THIS ROUND</p>
           <p class="p2-match-count aside-ps">5</p>
         </div>
-        <h3 class="p2-game-wins">GAME WINS</h3>
+        <h3 class="game-wins">GAME WINS</h3>
         <p>ROUND <span>1</span></p>
         <p class="aside-ps">125.75 SECONDS</p>
         <p>ROUND <span>4</span></p>
         <p class="aside-ps">63.98 SECONDS</p>
       </aside>
-
-
     </main>
     <script src="card.js"></script>
     <script src="deck.js"></script>
