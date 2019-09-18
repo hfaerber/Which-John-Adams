@@ -20,9 +20,9 @@ class Deck {
     }
   }
   moveToMatched() {
-      for (var i = 0; this.selectedCards.length; i++) {
-      this.matchedCards.push(this.selectedCards[i]);
-      this.selectedCards.shift();
-      }
+    for (var i = 0; this.selectedCards.length; i++) {
+    this.matchedCards.push(this.selectedCards[i]);
+    this.selectedCards.shift();
+    }
   }
 }

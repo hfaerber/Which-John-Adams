@@ -4,6 +4,5 @@ class Player {
     this.matchCount = 0;
   }
   findMatch() {
-    
   }
 }
