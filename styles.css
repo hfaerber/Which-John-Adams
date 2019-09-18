@@ -1,10 +1,5 @@
-* {
-  /* border: 1px solid blue; */
-}
-
 body {
   font-family: 'Open Sans', sans-serif;
-   /* background-color: lightgrey; */
    margin: 0;
 }
 
@@ -14,8 +9,8 @@ header {
 }
 
 .nav-icon {
-  width: 95px;
   cursor: pointer;
+  width: 95px;
 }
 
 h1 {
@@ -24,13 +19,13 @@ h1 {
 }
 
 main {
+  background-image: url("assetsja/backgroundjohnadams.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: grid;
   grid-template-areas:
     "left middle right";
   grid-template-columns: 1fr 3fr 1fr;
-  background-image: url("assetsja/backgroundjohnadams.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 p {
@@ -39,50 +34,45 @@ p {
 
 .winner-board {
   background-color: lightgrey;
-  position: absolute;
-  z-index: 10;
-  width: 19%;
-  text-align: center;
-  font-size: 134%;
   border: 2px solid black;
+  font-size: 134%;
   padding-bottom: 1%;
-  /* display: none; */
+  position: absolute;
+  text-align: center;
+  width: 19%;
+  z-index: 10;
 }
 
 .black-lines {
   border-top: 2px solid black;
-  width: 75%;
   margin: 7% auto;
+  width: 75%;
 }
 
 aside {
+  align-items: center;
   background-color: black;
-  width: 89%;
-  margin-top: 10%;
+  color: white;
   display: flex;
   flex-direction: column;
   font-size: 142%;
-  align-items: center;
-  color: white;
+  margin-top: 10%;
   text-align: center;
+  width: 89%;
 }
 
 .aside-ps {
-  /* font-size: 104%; */
   margin: 0% 0% 10% 0%;
-/* why isnt this on all the aside ps? */
 }
 
-.p1-match-count,
-.p2-match-count {
+.match-count {
   font-size: 397%;
   font-weight: 700;
-  margin-bottom: 0;
   line-height: .9;
+  margin-bottom: 0;
 }
 
-.p1-game-wins,
-.p2-game-wins {
+.game-wins {
   margin: 14% 0%;
 }
 
@@ -93,17 +83,14 @@ h3 {
 .left-aside {
   display: flex;
   justify-self: end;
-  /* color: white; */
-  /* visibility: hidden; */
-  /* display:none; */
 }
 
 .white-lines {
-  border-top: 2px solid white;
   border-bottom: 2px solid white;
-  width: 88%;
+  border-top: 2px solid white;
   text-align: center;
   padding: 7% 0%;
+  width: 88%;
 }
 
 .play-area {
@@ -116,16 +103,10 @@ h3 {
   width: 100%;
 }
 
-/* .game-directions {
-  display: none;
-} */
-
 form {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
-  /* padding: 15px; */
-  align-items: center;
   margin-top: 12%;
 }
 
@@ -133,7 +114,6 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* border: 1px solid blue; */
   width: 100%;
 }
 
@@ -145,50 +125,47 @@ label {
 .input-with-label-box {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid green; */
-  width: 42%;
   font-size: 160%;
+  width: 42%;
 }
 
 input[type=text] {
-  width: 96%;
+  border: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 115%;
-  padding: 7px;
-  border: 0;
   margin-bottom: 2%;
-}
-
-.play-game-button {
-  background-color: black;
-  font-family: 'Open Sans', sans-serif;
-  width: 100%;
-  color: white;
-  padding: 14px;
-  font-size: 148%;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
-  margin: 19% 0% 61% 0%;
-  border: 0;
-  cursor: pointer;
-}
-
-.directions-page-play-button {
-  background-color: black;
-  font-family: 'Open Sans', sans-serif;
-  width: 100%;
-  color: white;
-  padding: 10px;
-  font-size: 91%;
-  font-weight: 700;
-  font-family: 'Open Sans', sans-serif;
-  margin: 5% 0%;
-  cursor: pointer;
-  border: 0;
+  padding: 7px;
+  width: 96%;
 }
 
 .error-msg {
   font-weight: 700;
+}
+
+.play-game-button {
+  background-color: black;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 148%;
+  font-weight: bold;
+  margin: 19% 0% 61% 0%;
+  padding: 14px;
+  width: 100%;
+}
+
+.directions-page-play-button {
+  background-color: black;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 91%;
+  font-weight: 700;
+  margin: 5% 0%;
+  padding: 10px;
+  width: 100%;
 }
 
 article {
@@ -204,74 +181,68 @@ article > p {
 .named-greeting {
   font-size: 125%;
   font-weight: 700;
-  text-align: center;
   margin-top: 9%;
+  text-align: center;
 }
 
 .hide-able-winner-page {
   width: 100%;
+  text-align: center;
 }
 
 .congrats-heading {
   font-size: 200%;
   font-weight: 700;
-  text-align: center;
   margin-top: 10%;
 }
 
 .took-you-text {
   font-size: 177%;
   font-weight: 700;
-  text-align: center;
   margin-top: 9%;
 }
 
 .to-keep-playing-text {
   font-size: 177%;
   font-weight: 300;
-  text-align: center;
   margin: 9%;
 }
 
 .new-rematch-button-box {
-  width: 100%;
-  /* border: 1px solid blue; */
   display: flex;
   justify-content: space-between;
   margin-bottom: 54%;
+  width: 100%;
 }
 
 .winner-page-btn {
   background-color: black;
-  font-family: 'Open Sans', sans-serif;
-  width:43%;
+  border: 0;
   color: white;
-  padding: 12px;
+  font-family: 'Open Sans', sans-serif;
   font-size: 141%;
   font-weight: bold;
-  border: 0;
+  padding: 12px;
+  width:43%;
 }
 
 .hide-able-cards {
-  /* display: grid; */
-  /* grid-template-rows: 1fr 1fr 1fr; */
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   justify-content: space-around;
+  width: 100%;
 }
 
 .cards-row {
+  align-items: center;
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
 .j-card {
-  width: 15%;
-  /* height: 67%; */
   cursor: pointer;
   margin: 39px;
+  width: 15%;
 }
 
 [data-cardid="1"] {
